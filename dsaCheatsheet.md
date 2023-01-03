@@ -109,6 +109,30 @@
         - [JavaScript](#javascript-12)
         - [Java](#java-17)
       - [Interpolation search](#interpolation-search)
+        - [C](#c-14)
+        - [C++](#c-15)
+        - [JavaScript](#javascript-13)
+        - [Java](#java-18)
+      - [Jump search](#jump-search-1)
+        - [Pseudocode](#pseudocode-3)
+        - [C](#c-16)
+        - [C++](#c-17)
+        - [Java](#java-19)
+        - [Python](#python-19)
+      - [Exponential Search](#exponential-search)
+        - [Algorithm](#algorithm)
+        - [Pseudocode](#pseudocode-4)
+        - [C](#c-18)
+        - [C++](#c-19)
+        - [Java](#java-20)
+        - [Python](#python-20)
+      - [Fibonacci Search](#fibonacci-search)
+        - [Algorithm](#algorithm-1)
+        - [Complexity](#complexity)
+        - [C](#c-20)
+        - [Java](#java-21)
+        - [Python](#python-21)
+  - [Graphs](#graphs)
 
 ## Data Structures
 
@@ -2843,3 +2867,800 @@ class JumpSearch {
 ```
 
 #### Interpolation search
+
+Interpolation search is an algorithm for searching for a given key in an array that has been ordered by numerical values assigned to the keys (key values). It is an improvement over binary search where the values in a sorted array are uniformly distributed. Binary search always goes to the middle element to check. On the other hand, interpolation search may go to different locations according to the value of the key being searched. For example, if the value of the key is closer to the last element, interpolation search is likely to start search toward the end side.
+
+To find the position to be searched, it uses following formula.
+
+```text
+pos = lo + [ (x-arr[lo])*(hi-lo) / (arr[hi]-arr[Lo]) ]
+```
+
+##### C
+
+```c
+// Interpolation search
+
+#include <stdio.h>
+
+int interpolationSearch(int arr[], int n, int x) {
+  int lo = 0, hi = (n - 1);
+
+  while (lo <= hi && x >= arr[lo] && x <= arr[hi]) {
+    if (lo == hi) {
+      if (arr[lo] == x) {
+        return lo;
+      }
+      return -1;
+    }
+
+    int pos = lo + (((double)(hi - lo) / (arr[hi] - arr[lo])) * (x - arr[lo]));
+
+    if (arr[pos] == x) {
+      return pos;
+    }
+
+    if (arr[pos] < x) {
+      lo = pos + 1;
+    } else {
+      hi = pos - 1;
+    }
+  }
+  return -1;
+}
+
+int main() {
+  int arr[] = { 10, 12, 13, 16, 18, 19, 20, 21, 22, 23, 24, 33, 35, 42, 47 };
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  int x = 18;
+  int index = interpolationSearch(arr, n, x);
+
+  if (index != -1) {
+    printf("\nElement found at index %d", index);
+  } else {
+    printf("\nElement not found.");
+  }
+  return 0;
+}
+```
+
+##### C++
+
+```cpp
+// Interpolation search
+
+#include <iostream>
+using namespace std;
+
+int interpolationSearch(int arr[], int n, int x) {
+  int lo = 0, hi = (n - 1);
+
+  while (lo <= hi && x >= arr[lo] && x <= arr[hi]) {
+    if (lo == hi) {
+      if (arr[lo] == x) {
+        return lo;
+      }
+      return -1;
+    }
+
+    int pos = lo + (((double)(hi - lo) / (arr[hi] - arr[lo])) * (x - arr[lo]));
+
+    if (arr[pos] == x) {
+      return pos;
+    }
+
+    if (arr[pos] < x) {
+      lo = pos + 1;
+    } else {
+      hi = pos - 1;
+    }
+  }
+  return -1;
+}
+
+int main() {
+  int arr[] = { 10, 12, 13, 16, 18, 19, 20, 21, 22, 23, 24, 33, 35, 42, 47 };
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  int x = 18;
+  int index = interpolationSearch(arr, n, x);
+
+  if (index != -1) {
+    cout << "\nElement found at index " << index;
+  } else {
+    cout << "\nElement not found.";
+  }
+  return 0;
+}
+```
+
+##### JavaScript
+
+```js
+// Interpolation search
+
+function interpolationSearch(arr, n, x) {
+  let lo = 0,
+    hi = n - 1;
+
+  while (lo <= hi && x >= arr[lo] && x <= arr[hi]) {
+    if (lo == hi) {
+      if (arr[lo] == x) {
+        return lo;
+      }
+      return -1;
+    }
+
+    let pos =
+      lo + Math.floor(((hi - lo) / (arr[hi] - arr[lo])) * (x - arr[lo]));
+
+    if (arr[pos] == x) {
+      return pos;
+    }
+
+    if (arr[pos] < x) {
+      lo = pos + 1;
+    } else {
+      hi = pos - 1;
+    }
+  }
+  return -1;
+}
+
+let arr = [10, 12, 13, 16, 18, 19, 20, 21, 22, 23, 24, 33, 35, 42, 47];
+
+let n = arr.length;
+
+let x = 18;
+
+let index = interpolationSearch(arr, n, x);
+
+console.log("Element found at index", index);
+```
+
+##### Java
+
+```java
+// Interpolation search
+
+class InterpolationSearch {
+  public static int interpolationSearch(int arr[], int n, int x) {
+    int lo = 0, hi = (n - 1);
+
+    while (lo <= hi && x >= arr[lo] && x <= arr[hi]) {
+      if (lo == hi) {
+        if (arr[lo] == x) {
+          return lo;
+        }
+        return -1;
+      }
+
+      int pos = lo + (((hi - lo) / (arr[hi] - arr[lo])) * (x - arr[lo]));
+
+      if (arr[pos] == x) {
+        return pos;
+      }
+
+      if (arr[pos] < x) {
+        lo = pos + 1;
+      } else {
+        hi = pos - 1;
+      }
+    }
+    return -1;
+  }
+
+  public static void main(String args[]) {
+    int arr[] = { 10, 12, 13, 16, 18, 19, 20, 21, 22, 23, 24, 33, 35, 42, 47 };
+    int n = arr.length;
+
+    int x = 18;
+    int index = interpolationSearch(arr, n, x);
+
+    System.out.println("\nElement found at index " + index);
+  }
+}
+```
+
+#### Jump search
+
+Jump search is a searching algorithm for sorted arrays. The basic idea is to check fewer elements \(than linear search\) by jumping ahead by fixed steps or skipping some elements in place of searching all elements.
+
+For example, suppose we have an array arr[] of size n and block (to be jumped) size m. Then we search at the indexes arr[0], arr[m], arr[2m]…..arr[km] and so on. Once we find the interval \(arr[km] < x < arr[(k+1)m]\) we perform a linear search operation from the index km to find the element x.
+
+Let’s consider the following array: \(arr[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610}\). Length of the array is 16. Jump search will find the value of 55 with the following steps assuming that the block size to be jumped is 4.
+
+1. STEP 1: Jump from index 0 to index 4;
+2. STEP 2: Jump from index 4 to index 8;
+3. STEP 3: Jump from index 8 to index 12;
+4. STEP 4: Since the element at index 12 is greater than 55 we will jump back a step to come to index 8.
+5. STEP 5: Perform linear search from index 8 to get the element 55.
+
+##### Pseudocode
+
+```text
+
+function jumpSearch(arr, x)
+    n = length(arr)
+    step = sqrt(n)
+    prev = 0
+    while arr[min(step, n)-1] < x
+        prev = step
+        step += sqrt(n)
+        if prev >= n
+            return -1
+    while arr[prev] < x
+        prev++
+        if prev == min(step, n)
+            return -1
+    if arr[prev] == x
+        return prev
+    return -1
+```
+
+##### C
+
+```c
+// Jump search
+
+#include <math.h>
+
+int jumpSearch(int arr[], int x, int n) {
+  int step = sqrt(n);
+
+  int prev = 0;
+  while (arr[min(step, n) - 1] < x) {
+    prev = step;
+    step += sqrt(n);
+    if (prev >= n) {
+      return -1;
+    }
+  }
+
+  while (arr[prev] < x) {
+    prev++;
+
+    if (prev == min(step, n)) {
+      return -1;
+    }
+  }
+
+  if (arr[prev] == x) {
+    return prev;
+  }
+  return -1;
+}
+
+int main() {
+  int arr[] = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610 };
+  int x = 55;
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  int index = jumpSearch(arr, x, n);
+
+  cout << "\nNumber " << x << " is at index " << index;
+  return 0;
+}
+```
+
+##### C++
+
+```cpp
+// Jump search
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int jumpSearch(int arr[], int x, int n) {
+  int step = sqrt(n);
+
+  int prev = 0;
+  while (arr[min(step, n) - 1] < x) {
+    prev = step;
+    step += sqrt(n);
+    if (prev >= n) {
+      return -1;
+    }
+  }
+
+  while (arr[prev] < x) {
+    prev++;
+
+    if (prev == min(step, n)) {
+      return -1;
+    }
+  }
+
+  if (arr[prev] == x) {
+    return prev;
+  }
+  return -1;
+}
+
+int main() {
+  int arr[] = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610 };
+  int x = 55;
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  int index = jumpSearch(arr, x, n);
+
+  cout << "\nNumber " << x << " is at index " << index;
+  return 0;
+}
+```
+
+##### Java
+
+```java
+// Jump search
+
+class JumpSearch {
+  public static int jumpSearch(int arr[], int x, int n) {
+    int step = (int) Math.floor(Math.sqrt(n));
+
+    int prev = 0;
+    while (arr[Math.min(step, n) - 1] < x) {
+      prev = step;
+      step += (int) Math.floor(Math.sqrt(n));
+      if (prev >= n) {
+        return -1;
+      }
+    }
+
+    while (arr[prev] < x) {
+      prev++;
+
+      if (prev == Math.min(step, n)) {
+        return -1;
+      }
+    }
+
+    if (arr[prev] == x) {
+      return prev;
+    }
+    return -1;
+  }
+
+  public static void main(String args[]) {
+    int arr[] = { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610 };
+    int x = 55;
+    int n = arr.length;
+
+    int index = jumpSearch(arr, x, n);
+
+    System.out.println("\nNumber " + x + " is at index " + index);
+  }
+}
+```
+
+##### Python
+
+```python
+# Jump search
+
+import math
+
+def jumpSearch(arr, x, n):
+    step = math.floor(math.sqrt(n))
+
+    prev = 0
+    while arr[min(step, n)-1] < x:
+        prev = step
+        step += math.floor(math.sqrt(n))
+        if prev >= n:
+            return -1
+
+    while arr[prev] < x:
+        prev += 1
+
+        if prev == min(step, n):
+            return -1
+
+    if arr[prev] == x:
+        return prev
+    return -1
+
+arr = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+
+x = 55
+n = len(arr)
+
+index = jumpSearch(arr, x, n)
+
+print("\nNumber", x, "is at index", index)
+```
+
+#### Exponential Search
+
+In binary search, we divide the array into two parts and check whether the key element lies in the first half or the second half. We can similarly divide the array into two parts in exponential search. The idea is to start with subarray size 1, compare its last element with x, then try size 2, then 4 and so on until last element of a subarray is not greater. Once we find an index i \(after repeated doubling of i\), we know that the element must be present between i/2 and i \(Why i/2? because we could not find a greater value in previous iteration\).
+
+##### Algorithm
+
+1. Find range for binary search by repeated doubling
+2. Do Binary Search in above found range.
+
+##### Pseudocode
+
+```text
+
+function exponentialSearch(arr, n, x)
+    if arr[0] == x
+        return 0
+    i = 1
+    while i < n and arr[i] <= x
+        i = i*2
+    return binarySearch(arr, i/2, min(i, n), x)
+```
+
+##### C
+
+```c
+
+// Exponential search
+
+#include <math.h>
+
+int binarySearch(int arr[], int l, int r, int x) {
+  if (r >= l) {
+    int mid = l + (r - l) / 2;
+
+    if (arr[mid] == x) {
+      return mid;
+    }
+
+    if (arr[mid] > x) {
+      return binarySearch(arr, l, mid - 1, x);
+    }
+
+    return binarySearch(arr, mid + 1, r, x);
+  }
+
+  return -1;
+}
+
+int exponentialSearch(int arr[], int n, int x) {
+  if (arr[0] == x) {
+    return 0;
+  }
+
+  int i = 1;
+  while (i < n && arr[i] <= x) {
+    i = i * 2;
+  }
+
+  return binarySearch(arr, i / 2, min(i, n), x);
+}
+
+int main() {
+  int arr[] = { 2, 3, 4, 10, 40 };
+  int x = 10;
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  int result = exponentialSearch(arr, n, x);
+  (result == -1) ? printf("Element is not present in array") : printf("Element is present at index %d", result);
+  return 0;
+}
+```
+
+##### C++
+
+```cpp
+// Exponential search
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int binarySearch(int arr[], int l, int r, int x) {
+  if (r >= l) {
+    int mid = l + (r - l) / 2;
+
+    if (arr[mid] == x) {
+      return mid;
+    }
+
+    if (arr[mid] > x) {
+      return binarySearch(arr, l, mid - 1, x);
+    }
+
+    return binarySearch(arr, mid + 1, r, x);
+  }
+
+  return -1;
+}
+
+int exponentialSearch(int arr[], int n, int x) {
+  if (arr[0] == x) {
+    return 0;
+  }
+
+  int i = 1;
+  while (i < n && arr[i] <= x) {
+    i = i * 2;
+  }
+
+  return binarySearch(arr, i / 2, min(i, n), x);
+}
+
+int main() {
+  int arr[] = { 2, 3, 4, 10, 40 };
+  int x = 10;
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  int result = exponentialSearch(arr, n, x);
+  (result == -1) ? cout << "Element is not present in array" : cout << "Element is present at index " << result;
+  return 0;
+}
+```
+
+##### Java
+
+```java
+// Exponential search
+
+class ExponentialSearch {
+    static int binarySearch(int arr[], int l, int r, int x) {
+        if (r >= l) {
+        int mid = l + (r - l) / 2;
+
+        if (arr[mid] == x) {
+            return mid;
+        }
+
+        if (arr[mid] > x) {
+            return binarySearch(arr, l, mid - 1, x);
+        }
+
+        return binarySearch(arr, mid + 1, r, x);
+        }
+
+        return -1;
+    }
+
+    static int exponentialSearch(int arr[], int n, int x) {
+        if (arr[0] == x) {
+        return 0;
+        }
+
+        int i = 1;
+        while (i < n && arr[i] <= x) {
+        i = i * 2;
+        }
+
+        return binarySearch(arr, i / 2, Math.min(i, n), x);
+    }
+
+    public static void main(String args[]) {
+        int arr[] = { 2, 3, 4, 10, 40 };
+        int x = 10;
+        int n = arr.length;
+
+        int result = exponentialSearch(arr, n, x);
+        System.out.println((result < 0) ? "Element is not present in array" : "Element is present at index " + result);
+    }
+}
+```
+
+##### Python
+
+```python
+# Exponential search
+
+def binarySearch(arr, l, r, x):
+    if r >= l:
+        mid = l + (r - l) // 2
+
+        if arr[mid] == x:
+            return mid
+
+        if arr[mid] > x:
+            return binarySearch(arr, l, mid - 1, x)
+
+        return binarySearch(arr, mid + 1, r, x)
+
+    return -1
+
+def exponentialSearch(arr, n, x):
+    if arr[0] == x:
+        return 0
+
+    i = 1
+    while i < n and arr[i] <= x:
+        i = i * 2
+
+    return binarySearch(arr, i / 2, min(i, n), x)
+
+arr = [2, 3, 4, 10, 40]
+
+x = 10
+n = len(arr)
+
+result = exponentialSearch(arr, n, x)
+print("Element is present at index", result)
+```
+
+#### Fibonacci Search
+
+Fibonacci Search is a comparison-based technique that uses Fibonacci numbers to search an element in a sorted array.
+
+##### Algorithm
+
+1. Let 'fib2' be the smallest Fibonacci Number greater than or equal to the length of the array.
+2. Initialize 'fib1' and 'fib2' to the two previous Fibonacci Numbers.
+3. Initialize 'offset' to 0.
+4. While 'fib2' is greater than 0:
+   a. Calculate the midpoint of the current subarray using 'offset' and 'fib1'.
+   b. If the element at the midpoint is the target element, return its index.
+   c. If the target element is less than the element at the midpoint, set 'fib2' to 'fib1', 'fib1' to 'fib2' - 'fib1', and 'offset' to 'offset'.
+   d. If the target element is greater than the element at the midpoint, set 'fib2' to 'fib2' - 'fib1', 'fib1' to 'fib1', and 'offset' to 'offset' + 'fib1'.
+5. Return -1 if the element was not found.
+
+##### Complexity
+
+| Time Complexity | Space Complexity |
+| :-------------- | :--------------- |
+| O\(log n\)      | O\(1\)           |
+
+##### C
+
+```c
+// Fibonacci search
+
+#include <stdio.h>
+
+int min(int x, int y) {
+  return (x <= y) ? x : y;
+}
+
+int fibonacciSearch(int arr[], int x, int n) {
+  int fib2 = 0;
+  int fib1 = 1;
+  int fibM = fib2 + fib1;
+
+  while (fibM < n) {
+    fib2 = fib1;
+    fib1 = fibM;
+    fibM = fib2 + fib1;
+  }
+
+  int offset = -1;
+
+  while (fibM > 1) {
+    int i = min(offset + fib2, n - 1);
+
+    if (arr[i] < x) {
+      fibM = fib1;
+      fib1 = fib2;
+      fib2 = fibM - fib1;
+      offset = i;
+    } else if (arr[i] > x) {
+      fibM = fib2;
+      fib1 = fib1 - fib2;
+      fib2 = fibM - fib1;
+    } else {
+      return i;
+    }
+  }
+
+  if (fib1 && arr[offset + 1] == x) {
+    return offset + 1;
+  }
+
+  return -1;
+}
+
+int main() {
+  int arr[] = { 10, 22, 35, 40, 45, 50, 80, 82, 85, 90, 100 };
+  int n = sizeof(arr) / sizeof(arr[0]);
+  int x = 85;
+  printf("Found at index: %d", fibonacciSearch(arr, x, n));
+  return 0;
+}
+```
+
+##### Java
+
+```java
+// Fibonacci search
+
+class FibonacciSearch {
+    static int min(int x, int y) {
+        return (x <= y) ? x : y;
+    }
+
+    static int fibonacciSearch(int arr[], int x, int n) {
+        int fib2 = 0;
+        int fib1 = 1;
+        int fibM = fib2 + fib1;
+
+        while (fibM < n) {
+            fib2 = fib1;
+            fib1 = fibM;
+            fibM = fib2 + fib1;
+        }
+
+        int offset = -1;
+
+        while (fibM > 1) {
+            int i = min(offset + fib2, n - 1);
+
+            if (arr[i] < x) {
+                fibM = fib1;
+                fib1 = fib2;
+                fib2 = fibM - fib1;
+                offset = i;
+            } else if (arr[i] > x) {
+                fibM = fib2;
+                fib1 = fib1 - fib2;
+                fib2 = fibM - fib1;
+            } else {
+                return i;
+            }
+        }
+
+        if (fib1 && arr[offset + 1] == x) {
+            return offset + 1;
+        }
+
+        return -1;
+    }
+
+    public static void main(String args[]) {
+        int arr[] = { 10, 22, 35, 40, 45, 50, 80, 82, 85, 90, 100 };
+        int n = arr.length;
+        int x = 85;
+        System.out.println("Found at index: " + fibonacciSearch(arr, x, n));
+    }
+}
+```
+
+##### Python
+
+```python
+# Fibonacci search
+
+def fibonacciSearch(arr, x, n):
+    fib2 = 0
+    fib1 = 1
+    fibM = fib2 + fib1
+
+    while fibM < n:
+        fib2 = fib1
+        fib1 = fibM
+        fibM = fib2 + fib1
+
+    offset = -1
+
+    while fibM > 1:
+        i = min(offset + fib2, n - 1)
+
+        if arr[i] < x:
+            fibM = fib1
+            fib1 = fib2
+            fib2 = fibM - fib1
+            offset = i
+        elif arr[i] > x:
+            fibM = fib2
+            fib1 = fib1 - fib2
+            fib2 = fibM - fib1
+        else:
+            return i
+
+    if fib1 and arr[offset + 1] == x:
+        return offset + 1
+
+    return -1
+
+arr = [10, 22, 35, 40, 45, 50, 80, 82, 85, 90, 100]
+
+x = 85
+n = len(arr)
+
+print("Found at index:", fibonacciSearch(arr, x, n))
+```
+
+## Graphs
+
+A graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph. More formally a Graph can be defined as,
+
+> A Graph consists of a finite set of vertices(or nodes) and set of Edges which connect a pair of nodes.
