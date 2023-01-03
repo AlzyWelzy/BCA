@@ -134,7 +134,100 @@
         - [Python](#python-21)
   - [Graphs](#graphs)
     - [Breadth-first search](#breadth-first-search)
-      - [Algorithm](#algorithm-2)
+        - [Algorithm](#algorithm-2)
+        - [C](#c-21)
+        - [Output](#output)
+        - [Python](#python-22)
+        - [Output](#output-1)
+        - [C++](#c-22)
+        - [Output](#output-2)
+        - [Java](#java-22)
+        - [Output](#output-3)
+      - [Depth-first search](#depth-first-search)
+        - [C](#c-23)
+        - [Output](#output-4)
+        - [C++](#c-24)
+        - [Output](#output-5)
+        - [Java](#java-23)
+        - [Output](#output-6)
+        - [Python](#python-23)
+        - [Output](#output-7)
+      - [Dijkstra's Algorithm](#dijkstras-algorithm)
+        - [C](#c-25)
+        - [Output](#output-8)
+        - [Java](#java-24)
+        - [Output](#output-9)
+      - [Floyd-Warshall Algorithm](#floyd-warshall-algorithm)
+        - [C](#c-26)
+        - [Output](#output-10)
+        - [Java](#java-25)
+        - [Output](#output-11)
+      - [Bellman-Ford Algorithm](#bellman-ford-algorithm)
+        - [C](#c-27)
+        - [Output](#output-12)
+      - [Kruskal's Algorithm](#kruskals-algorithm)
+        - [C](#c-28)
+        - [Output](#output-13)
+        - [Python](#python-24)
+        - [Output](#output-14)
+        - [C++](#c-29)
+        - [Output](#output-15)
+      - [Prim's Algorithm](#prims-algorithm)
+        - [Pseudocode](#pseudocode-5)
+        - [Python](#python-25)
+        - [Output](#output-16)
+        - [C++](#c-30)
+        - [Output](#output-17)
+    - [Dynamic Programming](#dynamic-programming)
+      - [Knapsack Problem](#knapsack-problem)
+        - [Python](#python-26)
+        - [Output](#output-18)
+        - [C++](#c-31)
+        - [Output](#output-19)
+        - [Java](#java-26)
+        - [Output](#output-20)
+      - [Longest Common Subsequence](#longest-common-subsequence)
+        - [Python](#python-27)
+        - [Output](#output-21)
+        - [C++](#c-32)
+        - [Output](#output-22)
+        - [Java](#java-27)
+        - [Output](#output-23)
+      - [Longest Increasing Subsequence](#longest-increasing-subsequence)
+        - [Python](#python-28)
+        - [Output](#output-24)
+        - [C++](#c-33)
+        - [Output](#output-25)
+        - [Java](#java-28)
+        - [Output](#output-26)
+      - [Longest Palindromic Subsequence](#longest-palindromic-subsequence)
+        - [Python](#python-29)
+        - [Output](#output-27)
+        - [C++](#c-34)
+        - [Output](#output-28)
+        - [Java](#java-29)
+        - [Output](#output-29)
+      - [Maxtrix Chain Multiplication](#maxtrix-chain-multiplication)
+        - [Python](#python-30)
+        - [Output](#output-30)
+        - [C++](#c-35)
+        - [Output](#output-31)
+        - [Java](#java-30)
+        - [Output](#output-32)
+      - [Rod Cutting](#rod-cutting)
+        - [Python](#python-31)
+        - [Output](#output-33)
+        - [C++](#c-36)
+        - [Output](#output-34)
+        - [Java](#java-31)
+        - [Output](#output-35)
+      - [Subset Sum](#subset-sum)
+        - [Python](#python-32)
+        - [Output](#output-36)
+        - [C++](#c-37)
+        - [Output](#output-37)
+        - [Java](#java-32)
+        - [Output](#output-38)
 
 ## Data Structures
 
@@ -3700,4 +3793,2460 @@ Breadth-first search \(BFS\) is an algorithm for traversing or searching a graph
 #include <stdlib.h>
 
 #define MAX 100
+
+typedef struct node {
+  int vertex;
+  struct node* next;
+} node;
+
+typedef struct queue {
+  int items[MAX];
+  int front;
+  int rear;
+} queue;
+
+node* createNode(int);
+queue* createQueue();
+void enqueue(queue*, int);
+int dequeue(queue*);
+void printQueue(queue*);
+int isEmpty(queue*);
+void bfs(int, int);
+void addEdge(int, int);
+void display(int);
+
+int visited[MAX];
+int adjMatrix[MAX][MAX];
+int vertexCount;
+
+int main() {
+  int i, j;
+  vertexCount = 4;
+
+  for (i = 0; i < vertexCount; i++) {
+    for (j = 0; j < vertexCount; j++) {
+      adjMatrix[i][j] = 0;
+    }
+  }
+
+  addEdge(0, 1);
+  addEdge(0, 2);
+  addEdge(0, 3);
+  addEdge(1, 2);
+  addEdge(2, 0);
+  addEdge(2, 3);
+  addEdge(3, 3);
+
+  display(vertexCount);
+
+  bfs(2, 3);
+
+  return 0;
+}
+
+node* createNode(int v) {
+  node* newNode = malloc(sizeof(node));
+  newNode->vertex = v;
+  newNode->next = NULL;
+  return newNode;
+}
+
+queue* createQueue() {
+  queue* q = malloc(sizeof(queue));
+  q->front = -1;
+  q->rear = -1;
+  return q;
+}
+
+int isEmpty(queue* q) {
+  if (q->rear == -1) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+void enqueue(queue* q, int value) {
+  if (q->rear == MAX - 1) {
+    printf("Queue is Full");
+  } else {
+    if (q->front == -1) {
+      q->front = 0;
+    }
+    q->rear++;
+    q->items[q->rear] = value;
+  }
+}
+
+int dequeue(queue* q) {
+  int item;
+  if (isEmpty(q)) {
+    printf("Queue is empty");
+    item = -1;
+  } else {
+    item = q->items[q->front];
+    q->front++;
+    if (q->front > q->rear) {
+      printf("Resetting queue ");
+      q->front = q->rear = -1;
+    }
+  }
+  return item;
+}
+
+void printQueue(queue* q) {
+  int i = q->front;
+
+  if (isEmpty(q)) {
+    printf("Queue is empty");
+  } else {
+    printf("Queue contains \n");
+    for (i = q->front; i < q->rear + 1; i++) {
+      printf("%d ", q->items[i]);
+    }
+  }
+}
+
+void bfs(int startVertex, int target) {
+  queue* q = createQueue();
+
+  visited[startVertex] = 1;
+  enqueue(q, startVertex);
+
+  while (!isEmpty(q)) {
+    printQueue(q);
+    int currentVertex = dequeue(q);
+    printf("Visited %d \n", currentVertex);
+
+    node* temp = adjLists[currentVertex];
+
+    while (temp) {
+      int adjVertex = temp->vertex;
+
+      if (adjVertex == target) {
+        printf("Found %d", target);
+        return;
+      }
+
+      if (!visited[adjVertex]) {
+        visited[adjVertex] = 1;
+        enqueue(q, adjVertex);
+      }
+      temp = temp->next;
+    }
+  }
+}
+
+void addEdge(int src, int dest) {
+  node* newNode = createNode(dest);
+  newNode->next = adjLists[src];
+  adjLists[src] = newNode;
+
+  newNode = createNode(src);
+  newNode->next = adjLists[dest];
+  adjLists[dest] = newNode;
+}
+
+void display(int vertexCount) {
+  int i;
+  for (i = 0; i < vertexCount; i++) {
+    node* temp = adjLists[i];
+    printf("\n Vertex %d\n: ", i);
+    while (temp) {
+      printf("%d -> ", temp->vertex);
+      temp = temp->next;
+    }
+    printf("NULL\n");
+  }
+}
+```
+
+##### Output
+
+```text
+Vertex 0
+: 3 -> 2 -> 1 -> NULL
+
+Vertex 1
+: 2 -> 0 -> NULL
+
+Vertex 2
+: 3 -> 1 -> 0 -> NULL
+
+Vertex 3
+: 3 -> 2 -> 0 -> NULL
+
+Queue contains
+2
+Visited 2
+Queue contains
+0
+Visited 0
+Queue contains
+3
+Visited 3
+Found 3
+```
+
+##### Python
+
+```python
+# Breadth-first search
+
+from collections import defaultdict
+
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
+
+    def BFS(self, s):
+        visited = [False] * (max(self.graph) + 1)
+        queue = []
+        queue.append(s)
+        visited[s] = True
+
+        while queue:
+            s = queue.pop(0)
+            print(s, end = " ")
+
+            for i in self.graph[s]:
+                if visited[i] == False:
+                    queue.append(i)
+                    visited[i] = True
+
+g = Graph()
+g.addEdge(0, 1)
+g.addEdge(0, 2)
+g.addEdge(1, 2)
+g.addEdge(2, 0)
+g.addEdge(2, 3)
+g.addEdge(3, 3)
+
+print("Following is Breadth First Traversal (starting from vertex 2)")
+g.BFS(2)
+```
+
+##### Output
+
+```text
+
+Following is Breadth First Traversal (starting from vertex 2)
+2 0 3 1
+```
+
+##### C++
+
+```cpp
+// Breadth-first search
+
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+class Graph {
+  int V;
+  list<int> *adj;
+
+public:
+    Graph(int V);
+    void addEdge(int v, int w);
+    void BFS(int s);
+    };
+
+Graph::Graph(int V) {
+    this->V = V;
+    adj = new list<int>[V];
+    }
+
+void Graph::addEdge(int v, int w) {
+    adj[v].push_back(w);
+    }
+
+void Graph::BFS(int s) {
+    bool *visited = new bool[V];
+    for(int i = 0; i < V; i++)
+        visited[i] = false;
+
+    list<int> queue;
+
+    visited[s] = true;
+    queue.push_back(s);
+
+    list<int>::iterator i;
+
+    while(!queue.empty()) {
+        s = queue.front();
+        cout << s << " ";
+        queue.pop_front();
+
+        for(i = adj[s].begin(); i != adj[s].end(); ++i) {
+            if(!visited[*i]) {
+                visited[*i] = true;
+                queue.push_back(*i);
+                }
+            }
+        }
+    }
+
+int main() {
+    Graph g(4);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 2);
+    g.addEdge(2, 0);
+    g.addEdge(2, 3);
+    g.addEdge(3, 3);
+
+    cout << "Following is Breadth First Traversal (starting from vertex 2)" << endl;
+    g.BFS(2);
+
+    return 0;
+    }
+```
+
+##### Output
+
+```text
+Following is Breadth First Traversal (starting from vertex 2)
+2 0 3 1
+```
+
+##### Java
+
+```java
+// Breadth-first search
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public class Graph {
+    private int V;
+    private LinkedList<Integer> adj[];
+
+    Graph(int v) {
+        V = v;
+        adj = new LinkedList[v];
+        for (int i = 0; i < v; ++i)
+            adj[i] = new LinkedList();
+    }
+
+    void addEdge(int v, int w) {
+        adj[v].add(w);
+    }
+
+    void BFS(int s) {
+        boolean visited[] = new boolean[V];
+
+        LinkedList<Integer> queue = new LinkedList<Integer>();
+
+        visited[s] = true;
+        queue.add(s);
+
+        while (queue.size() != 0) {
+            s = queue.poll();
+            System.out.print(s + " ");
+
+            Iterator<Integer> i = adj[s].listIterator();
+            while (i.hasNext()) {
+                int n = i.next();
+                if (!visited[n]) {
+                    visited[n] = true;
+                    queue.add(n);
+                }
+            }
+        }
+    }
+
+    public static void main(String args[]) {
+        Graph g = new Graph(4);
+
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
+        g.addEdge(2, 0);
+        g.addEdge(2, 3);
+        g.addEdge(3, 3);
+
+        System.out.println("Following is Breadth First Traversal (starting from vertex 2)");
+
+        g.BFS(2);
+    }
+}
+```
+
+##### Output
+
+```text
+Following is Breadth First Traversal (starting from vertex 2)
+2 0 3 1
+```
+
+#### Depth-first search
+
+Depth-first search \(DFS\) is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node \(selecting some arbitrary node as the root node in the case of a graph\) and explores as far as possible along each branch before backtracking.
+
+##### C
+
+```c
+// Depth-first search
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+  int vertex;
+  struct node* next;
+};
+
+struct node* createNode(int);
+
+struct Graph {
+  int numVertices;
+  struct node** adjLists;
+  int* visited;
+};
+
+// BFS algorithm
+void DFS(struct Graph* graph, int vertex) {
+  struct node* adjList = graph->adjLists[vertex];
+  struct node* temp = adjList;
+
+  graph->visited[vertex] = 1;
+  printf("Visited %d \n", vertex);
+
+  while (temp != NULL) {
+    int connectedVertex = temp->vertex;
+
+    if (graph->visited[connectedVertex] == 0) {
+      DFS(graph, connectedVertex);
+    }
+    temp = temp->next;
+  }
+}
+
+// Create a node
+
+struct node* createNode(int v) {
+  struct node* newNode = malloc(sizeof(struct node));
+  newNode->vertex = v;
+  newNode->next = NULL;
+  return newNode;
+}
+
+// Create a graph
+
+struct Graph* createGraph(int vertices) {
+  struct Graph* graph = malloc(sizeof(struct Graph));
+  graph->numVertices = vertices;
+
+  graph->adjLists = malloc(vertices * sizeof(struct node*));
+  graph->visited = malloc(vertices * sizeof(int));
+
+  int i;
+  for (i = 0; i < vertices; i++) {
+    graph->adjLists[i] = NULL;
+    graph->visited[i] = 0;
+  }
+
+  return graph;
+}
+
+// Add edge
+
+void addEdge(struct Graph* graph, int src, int dest) {
+  // Add edge from src to dest
+  struct node* newNode = createNode(dest);
+  newNode->next = graph->adjLists[src];
+  graph->adjLists[src] = newNode;
+
+  // Add edge from dest to src
+  newNode = createNode(src);
+  newNode->next = graph->adjLists[dest];
+  graph->adjLists[dest] = newNode;
+}
+
+int main() {
+  struct Graph* graph = createGraph(4);
+  addEdge(graph, 0, 1);
+  addEdge(graph, 0, 2);
+  addEdge(graph, 1, 2);
+  addEdge(graph, 2, 3);
+
+  DFS(graph, 2);
+
+  return 0;
+}
+```
+
+##### Output
+
+```text
+Visited 2
+Visited 3
+Visited 0
+Visited 1
+```
+
+##### C++
+
+```cpp
+// Depth-first search
+
+#include <iostream>
+#include <list>
+
+
+class Graph {
+    int V;
+    std::list<int> *adj;
+    void DFSUtil(int v, bool visited[]);
+public:
+    Graph(int V);
+    void addEdge(int v, int w);
+    void DFS(int v);
+};
+
+Graph::Graph(int V) {
+    this->V = V;
+    adj = new std::list<int>[V];
+}
+
+void Graph::addEdge(int v, int w) {
+    adj[v].push_back(w);
+}
+
+void Graph::DFSUtil(int v, bool visited[]) {
+    visited[v] = true;
+    std::cout << v << " ";
+
+    std::list<int>::iterator i;
+    for (i = adj[v].begin(); i != adj[v].end(); ++i)
+        if (!visited[*i])
+            DFSUtil(*i, visited);
+}
+
+void Graph::DFS(int v) {
+    bool *visited = new bool[V];
+    for (int i = 0; i < V; i++)
+        visited[i] = false;
+
+    DFSUtil(v, visited);
+}
+
+int main() {
+    Graph g(4);
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 2);
+    g.addEdge(2, 0);
+    g.addEdge(2, 3);
+    g.addEdge(3, 3);
+
+    std::cout << "Following is Depth First Traversal (starting from vertex 2) \n";
+    g.DFS(2);
+
+    return 0;
+}
+```
+
+##### Output
+
+```text
+Following is Depth First Traversal (starting from vertex 2)
+2 0 1 3
+```
+
+##### Java
+
+```java
+// Depth-first search
+
+import java.io.*;
+import java.util.*;
+
+
+class Graph {
+    private int V;
+    private LinkedList<Integer> adj[];
+
+    Graph(int v) {
+        V = v;
+        adj = new LinkedList[v];
+        for (int i = 0; i < v; ++i)
+            adj[i] = new LinkedList();
+    }
+
+    void addEdge(int v, int w) {
+        adj[v].add(w);
+    }
+
+    void DFSUtil(int v, boolean visited[]) {
+        visited[v] = true;
+        System.out.print(v + " ");
+
+        int n;
+
+        Iterator<Integer> i = adj[v].listIterator();
+        while (i.hasNext()) {
+            n = i.next();
+            if (!visited[n])
+                DFSUtil(n, visited);
+        }
+    }
+
+    void DFS(int v) {
+        boolean visited[] = new boolean[V];
+
+        DFSUtil(v, visited);
+    }
+
+    public static void main(String args[]) {
+        Graph g = new Graph(4);
+
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
+        g.addEdge(2, 0);
+        g.addEdge(2, 3);
+        g.addEdge(3, 3);
+
+        System.out.println("Following is Depth First Traversal (starting from vertex 2)");
+
+        g.DFS(2);
+    }
+}
+```
+
+##### Output
+
+```text
+Following is Depth First Traversal (starting from vertex 2)
+2 0 1 3
+```
+
+##### Python
+
+```python
+# Depth-first search
+
+from collections import defaultdict
+
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
+
+    def DFSUtil(self, v, visited):
+        visited[v] = True
+        print(v, end=' ')
+
+        for i in self.graph[v]:
+            if visited[i] == False:
+                self.DFSUtil(i, visited)
+
+    def DFS(self, v):
+        visited = [False] * (max(self.graph) + 1)
+        self.DFSUtil(v, visited)
+
+g = Graph()
+g.addEdge(0, 1)
+g.addEdge(0, 2)
+g.addEdge(1, 2)
+g.addEdge(2, 0)
+g.addEdge(2, 3)
+g.addEdge(3, 3)
+
+print("Following is Depth First Traversal (starting from vertex 2)")
+g.DFS(2)
+```
+
+##### Output
+
+```text
+Following is Depth First Traversal (starting from vertex 2)
+2 0 1 3
+```
+
+#### Dijkstra's Algorithm
+
+Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks. It was conceived by computer scientist Edsger W. Dijkstra in 1956 and published three years later.
+
+##### C
+
+```c
+// Dijkstra's algorithm
+
+#include <stdio.h>
+#include <limits.h>
+
+#define V 9
+
+int minDistance(int dist[], int sptSet[]) {
+  int min = INT_MAX, min_index;
+
+  for (int v = 0; v < V; v++)
+    if (sptSet[v] == 0 && dist[v] <= min)
+      min = dist[v], min_index = v;
+
+  return min_index;
+}
+
+int printSolution(int dist[]) {
+  printf("Vertex \t\t Distance from Source");
+
+    for (int i = 0; i < V; i++)
+        printf("%d \t\t %d", i, dist[i]);
+}
+
+void dijkstra(int graph[V][V], int src) {
+  int dist[V];
+  int sptSet[V];
+
+  for (int i = 0; i < V; i++)
+    dist[i] = INT_MAX, sptSet[i] = 0;
+
+  dist[src] = 0;
+
+  for (int count = 0; count < V - 1; count++) {
+    int u = minDistance(dist, sptSet);
+    sptSet[u] = 1;
+
+    for (int v = 0; v < V; v++)
+      if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v])
+        dist[v] = dist[u] + graph[u][v];
+  }
+
+  printSolution(dist);
+}
+
+int main() {
+  int graph[V][V] = {
+    { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+    { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
+    { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+    { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
+    { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
+    { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
+    { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
+    { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
+    { 0, 0, 2, 0, 0, 0, 6, 7, 0 }
+  };
+
+  dijkstra(graph, 0);
+
+  return 0;
+}
+```
+
+##### Output
+
+```text
+Vertex           Distance from Source
+0                0
+1                4
+2                12
+3                19
+4                21
+5                11
+6                9
+7                8
+8                14
+```
+
+##### Java
+
+```java
+// Dijkstra's algorithm
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+
+class ShortestPath {
+    static final int V = 9;
+
+    int minDistance(int dist[], Boolean sptSet[]) {
+        int min = Integer.MAX_VALUE, min_index = -1;
+
+        for (int v = 0; v < V; v++)
+            if (sptSet[v] == false && dist[v] <= min) {
+                min = dist[v];
+                min_index = v;
+            }
+
+        return min_index;
+    }
+
+    void printSolution(int dist[]) {
+        System.out.println("Vertex \t\t Distance from Source");
+        for (int i = 0; i < V; i++)
+            System.out.println(i + " \t\t " + dist[i]);
+    }
+
+    void dijkstra(int graph[][], int src) {
+        int dist[] = new int[V];
+
+        Boolean sptSet[] = new Boolean[V];
+
+        for (int i = 0; i < V; i++) {
+            dist[i] = Integer.MAX_VALUE;
+            sptSet[i] = false;
+        }
+
+        dist[src] = 0;
+
+        for (int count = 0; count < V - 1; count++) {
+            int u = minDistance(dist, sptSet);
+
+            sptSet[u] = true;
+
+            for (int v = 0; v < V; v++)
+
+                if (!sptSet[v] && graph[u][v] != 0 &&
+                        dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v])
+                    dist[v] = dist[u] + graph[u][v];
+        }
+
+        printSolution(dist);
+    }
+
+    public static void main(String[] args) {
+        int graph[][] = new int[][]{
+                {0, 4, 0, 0, 0, 0, 0, 8, 0},
+                {4, 0, 8, 0, 0, 0, 0, 11, 0},
+                {0, 8, 0, 7, 0, 4, 0, 0, 2},
+                {0, 0, 7, 0, 9, 14, 0, 0, 0},
+                {0, 0, 0, 9, 0, 10, 0, 0, 0},
+                {0, 0, 4, 14, 10, 0, 2, 0, 0},
+                {0, 0, 0, 0, 0, 2, 0, 1, 6},
+                {8, 11, 0, 0, 0, 0, 1, 0, 7},
+                {0, 0, 2, 0, 0, 0, 6, 7, 0}
+        };
+        ShortestPath t = new ShortestPath();
+        t.dijkstra(graph, 0);
+    }
+}
+```
+
+##### Output
+
+```text
+Vertex           Distance from Source
+0                0
+1                4
+2                12
+3                19
+4                21
+5                11
+6                9
+7                8
+8                14
+```
+
+#### Floyd-Warshall Algorithm
+
+Floyd–Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but with no negative cycles). A single execution of the algorithm will find the lengths (summed weights) of the shortest paths between all pairs of vertices, though it does not return details of the paths themselves.
+
+##### C
+
+```c
+// Floyd-Warshall algorithm
+
+#include <stdio.h>
+#include <limits.h>
+
+#define V 4
+
+void printSolution(int dist[][V]) {
+  printf("The following matrix shows the shortest distances between every pair of vertices \n");
+  for (int i = 0; i < V; i++) {
+    for (int j = 0; j < V; j++) {
+      if (dist[i][j] == INT_MAX)
+        printf("%7s", "INF");
+      else
+        printf("%7d", dist[i][j]);
+    }
+    printf(" \n");
+    }
+}
+
+void floydWarshall(int graph[][V]) {
+  int dist[V][V], i, j, k;
+
+  for (i = 0; i < V; i++)
+    for (j = 0; j < V; j++)
+      dist[i][j] = graph[i][j];
+
+  for (k = 0; k < V; k++) {
+    for (i = 0; i < V; i++) {
+      for (j = 0; j < V; j++) {
+        if (dist[i][k] + dist[k][j] < dist[i][j])
+          dist[i][j] = dist[i][k] + dist[k][j];
+      }
+    }
+  }
+
+  printSolution(dist);
+}
+
+int main() {
+  int graph[V][V] = {
+    { 0, 5, INF, 10 },
+    { INF, 0, 3, INF },
+    { INF, INF, 0, 1 },
+    { INF, INF, INF, 0 }
+  };
+
+  floydWarshall(graph);
+  return 0;
+}
+```
+
+##### Output
+
+```text
+The following matrix shows the shortest distances between every pair of vertices
+      0       5      8      9
+    INF       0      3      4
+    INF     INF      0      1
+    INF     INF    INF      0
+```
+
+##### Java
+
+```java
+// Floyd-Warshall algorithm
+
+import java.util.*;
+import java.lang.*;
+
+class FloydWarshall {
+    final static int INF = 99999, V = 4;
+
+    void floydWarshall(int graph[][]) {
+        int dist[][] = new int[V][V];
+        int i, j, k;
+
+        for (i = 0; i < V; i++)
+            for (j = 0; j < V; j++)
+                dist[i][j] = graph[i][j];
+
+        for (k = 0; k < V; k++) {
+            for (i = 0; i < V; i++) {
+                for (j = 0; j < V; j++) {
+                    if (dist[i][k] + dist[k][j] < dist[i][j])
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                }
+            }
+        }
+
+        printSolution(dist);
+    }
+
+    void printSolution(int dist[][]) {
+        System.out.println("The following matrix shows the shortest " +
+                "distances between every pair of vertices ");
+        for (int i = 0; i < V; i++) {
+            for (int j = 0; j < V; j++) {
+                if (dist[i][j] == INF)
+                    System.out.print("INF ");
+                else
+                    System.out.print(dist[i][j] + "   ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        int graph[][] = {
+                {0, 5, INF, 10},
+                {INF, 0, 3, INF},
+                {INF, INF, 0, 1},
+                {INF, INF, INF, 0}
+        };
+        FloydWarshall a = new FloydWarshall();
+
+        a.floydWarshall(graph);
+    }
+}
+```
+
+##### Output
+
+```text
+The following matrix shows the shortest distances between every pair of vertices
+0   5   8   9
+INF 0   3   4
+INF INF 0   1
+INF INF INF 0
+```
+
+#### Bellman-Ford Algorithm
+
+The Bellman–Ford algorithm is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph. It is slower than Dijkstra's algorithm for the same problem, but more versatile, as it is capable of handling graphs in which some of the edge weights are negative numbers.
+
+##### C
+
+```c
+
+// Bellman-Ford algorithm
+
+#include <stdio.h>
+#include <limits.h>
+
+#define V 5
+#define E 8
+
+struct Edge {
+  int src, dest, weight;
+};
+
+struct Graph {
+  int V, E;
+  struct Edge* edge;
+};
+
+struct Graph* createGraph(int V, int E) {
+  struct Graph* graph = (struct Graph*) malloc(sizeof(struct Graph));
+  graph->V = V;
+  graph->E = E;
+  graph->edge = (struct Edge*) malloc(graph->E * sizeof(struct Edge));
+  return graph;
+}
+
+void printArr(int dist[], int n) {
+  printf("Vertex   Distance from Source\n");
+  for (int i = 0; i < V; ++i)
+    printf("%d \t\t %d\n", i, dist[i]);
+}
+
+void BellmanFord(struct Graph* graph, int src) {
+  int V = graph->V;
+  int E = graph->E;
+  int dist[V];
+
+  for (int i = 0; i < V; i++)
+    dist[i] = INT_MAX;
+  dist[src] = 0;
+
+  for (int i = 1; i <= V - 1; i++) {
+    for (int j = 0; j < E; j++) {
+      int u = graph->edge[j].src;
+      int v = graph->edge[j].dest;
+      int weight = graph->edge[j].weight;
+      if (dist[u] != INT_MAX && dist[u] + weight < dist[v])
+        dist[v] = dist[u] + weight;
+    }
+  }
+
+  for (int i = 0; i < E; i++) {
+    int u = graph->edge[i].src;
+    int v = graph->edge[i].dest;
+    int weight = graph->edge[i].weight;
+    if (dist[u] != INT_MAX && dist[u] + weight < dist[v]) {
+      printf("Graph contains negative weight cycle");
+      return;
+    }
+  }
+
+  printArr(dist, V);
+
+  return;
+}
+
+int main() {
+  int V = 5;
+  int E = 8;
+  struct Graph* graph = createGraph(V, E);
+
+  graph->edge[0].src = 0;
+  graph->edge[0].dest = 1;
+  graph->edge[0].weight = -1;
+
+  graph->edge[1].src = 0;
+  graph->edge[1].dest = 2;
+  graph->edge[1].weight = 4;
+
+  graph->edge[2].src = 1;
+  graph->edge[2].dest = 2;
+  graph->edge[2].weight = 3;
+
+  graph->edge[3].src = 1;
+  graph->edge[3].dest = 3;
+  graph->edge[3].weight = 2;
+
+  graph->edge[4].src = 1;
+  graph->edge[4].dest = 4;
+  graph->edge[4].weight = 2;
+
+  graph->edge[5].src = 3;
+  graph->edge[5].dest = 2;
+  graph->edge[5].weight = 5;
+
+  graph->edge[6].src = 3;
+  graph->edge[6].dest = 1;
+  graph->edge[6].weight = 1;
+
+  graph->edge[7].src = 4;
+  graph->edge[7].dest = 3;
+  graph->edge[7].weight = -3;
+
+  BellmanFord(graph, 0);
+
+  return 0;
+}
+```
+
+##### Output
+
+```text
+Vertex   Distance from Source
+0                0
+1                -1
+2                2
+3                -2
+4                1
+```
+
+#### Kruskal's Algorithm
+
+Kruskal's algorithm is a minimum spanning tree algorithm which finds an edge of the least possible weight that connects any two trees in the forest. It is a greedy algorithm in graph theory as in each step it adds the next lowest-weight edge that will not form a cycle to the minimum spanning tree.
+
+##### C
+
+```c
+
+// Kruskal's algorithm
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define V 4
+
+struct Edge {
+  int src, dest, weight;
+};
+
+struct Graph {
+  int V, E;
+  struct Edge* edge;
+};
+
+struct Graph* createGraph(int V, int E) {
+  struct Graph* graph = (struct Graph*) malloc(sizeof(struct Graph));
+  graph->V = V;
+  graph->E = E;
+  graph->edge = (struct Edge*) malloc(graph->E * sizeof(struct Edge));
+  return graph;
+}
+
+struct subset {
+  int parent;
+  int rank;
+};
+
+int find(struct subset subsets[], int i) {
+  if (subsets[i].parent != i)
+    subsets[i].parent = find(subsets, subsets[i].parent);
+  return subsets[i].parent;
+}
+
+void Union(struct subset subsets[], int x, int y) {
+  int xroot = find(subsets, x);
+  int yroot = find(subsets, y);
+  if (subsets[xroot].rank < subsets[yroot].rank)
+    subsets[xroot].parent = yroot;
+  else if (subsets[xroot].rank > subsets[yroot].rank)
+    subsets[yroot].parent = xroot;
+  else {
+    subsets[yroot].parent = xroot;
+    subsets[xroot].rank++;
+  }
+}
+
+int myComp(const void* a, const void* b) {
+  struct Edge* a1 = (struct Edge*) a;
+  struct Edge* b1 = (struct Edge*) b;
+  return a1->weight > b1->weight;
+}
+
+void KruskalMST(struct Graph* graph) {
+  int V = graph->V;
+  struct Edge result[V];
+  int e = 0;
+  int i = 0;
+  qsort(graph->edge, graph->E, sizeof(graph->edge[0]), myComp);
+  struct subset* subsets = (struct subset*) malloc(V * sizeof(struct subset));
+  for (int v = 0; v < V; ++v) {
+    subsets[v].parent = v;
+    subsets[v].rank = 0;
+  }
+  while (e < V - 1) {
+    struct Edge next_edge = graph->edge[i++];
+    int x = find(subsets, next_edge.src);
+    int y = find(subsets, next_edge.dest);
+    if (x != y) {
+      result[e++] = next_edge;
+      Union(subsets, x, y);
+    }
+  }
+  printf("Following are the edges in the constructed MST\n");
+  for (i = 0; i < e; ++i)
+    printf("%d -- %d == %d\n", result[i].src, result[i].dest, result[i].weight);
+  return;
+}
+
+int main() {
+  int V = 4;
+  int E = 5;
+  struct Graph* graph = createGraph(V, E);
+  graph->edge[0].src = 0;
+  graph->edge[0].dest = 1;
+  graph->edge[0].weight = 10;
+  graph->edge[1].src = 0;
+  graph->edge[1].dest = 2;
+  graph->edge[1].weight = 6;
+  graph->edge[2].src = 0;
+  graph->edge[2].dest = 3;
+  graph->edge[2].weight = 5;
+  graph->edge[3].src = 1;
+  graph->edge[3].dest = 3;
+  graph->edge[3].weight = 15;
+  graph->edge[4].src = 2;
+  graph->edge[4].dest = 3;
+  graph->edge[4].weight = 4;
+  KruskalMST(graph);
+  return 0;
+}
+```
+
+##### Output
+
+```text
+
+Following are the edges in the constructed MST
+
+2 -- 3 == 4
+0 -- 3 == 5
+0 -- 1 == 10
+```
+
+##### Python
+
+```python
+# Kruskal's algorithm
+
+
+class Graph:
+
+    def __init__(self, vertices):
+        self.V = vertices
+        self.graph = []
+
+    def add_edge(self, u, v, w):
+        self.graph.append([u, v, w])
+
+    def find(self, parent, i):
+        if parent[i] == i:
+            return i
+        return self.find(parent, parent[i])
+
+    def apply_union(self, parent, rank, x, y):
+        xroot = self.find(parent, x)
+        yroot = self.find(parent, y)
+        if rank[xroot] < rank[yroot]:
+            parent[xroot] = yroot
+        elif rank[xroot] > rank[yroot]:
+            parent[yroot] = xroot
+        else:
+            parent[yroot] = xroot
+            rank[xroot] += 1
+
+    def kruskal_mst(self):
+        result = []
+        i = 0
+        e = 0
+        self.graph = sorted(self.graph, key=lambda item: item[2])
+        parent = []
+        rank = []
+        for node in range(self.V):
+            parent.append(node)
+            rank.append(0)
+        while e < self.V - 1:
+            u, v, w = self.graph[i]
+            i = i + 1
+            x = self.find(parent, u)
+            y = self.find(parent, v)
+            if x != y:
+                e = e + 1
+                result.append([u, v, w])
+                self.apply_union(parent, rank, x, y)
+        print("Following are the edges in the constructed MST")
+        for u, v, weight in result:
+            print("%d -- %d == %d" % (u, v, weight))
+
+
+
+g = Graph(4)
+
+g.add_edge(0, 1, 10)
+g.add_edge(0, 2, 6)
+g.add_edge(0, 3, 5)
+g.add_edge(1, 3, 15)
+g.add_edge(2, 3, 4)
+
+g.kruskal_mst()
+```
+
+##### Output
+
+```text
+
+Following are the edges in the constructed MST
+
+2 -- 3 == 4
+0 -- 3 == 5
+0 -- 1 == 10
+```
+
+##### C++
+
+```cpp
+// Kruskal's algorithm
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Graph {
+  int V, E;
+  vector<tuple<int, int, int>> edges;
+
+    public:
+    Graph(int V, int E) {
+        this->V = V;
+        this->E = E;
+    }
+
+    void addEdge(int u, int v, int w) {
+        edges.push_back({w, u, v});
+    }
+
+    int kruskalMST();
+};
+
+struct DisjointSets {
+    int *parent, *rnk;
+    int n;
+
+    DisjointSets(int n) {
+        this->n = n;
+        parent = new int[n + 1];
+        rnk = new int[n + 1];
+
+        for (int i = 0; i <= n; i++) {
+            rnk[i] = 0;
+            parent[i] = i;
+        }
+    }
+
+    int find(int u) {
+        if (u != parent[u])
+            parent[u] = find(parent[u]);
+        return parent[u];
+    }
+
+    void merge(int x, int y) {
+        x = find(x), y = find(y);
+
+        if (rnk[x] > rnk[y])
+            parent[y] = x;
+        else
+            parent[x] = y;
+
+        if (rnk[x] == rnk[y])
+            rnk[y]++;
+    }
+};
+
+int Graph::kruskalMST() {
+    int mst_wt = 0;
+    sort(edges.begin(), edges.end());
+
+    DisjointSets ds(V);
+
+    vector<tuple<int, int, int>>::iterator it;
+    for (it = edges.begin(); it != edges.end(); it++) {
+        int u = get<1>(*it);
+        int v = get<2>(*it);
+
+        int set_u = ds.find(u);
+        int set_v = ds.find(v);
+
+        if (set_u != set_v) {
+            cout << u << " - " << v << endl;
+            mst_wt += get<0>(*it);
+            ds.merge(set_u, set_v);
+        }
+    }
+
+    return mst_wt;
+}
+
+int main() {
+    int V = 9, E = 14;
+    Graph g(V, E);
+
+    g.addEdge(0, 1, 4);
+    g.addEdge(0, 7, 8);
+    g.addEdge(1, 2, 8);
+    g.addEdge(1, 7, 11);
+    g.addEdge(2, 3, 7);
+    g.addEdge(2, 8, 2);
+    g.addEdge(2, 5, 4);
+    g.addEdge(3, 4, 9);
+    g.addEdge(3, 5, 14);
+    g.addEdge(4, 5, 10);
+    g.addEdge(5, 6, 2);
+    g.addEdge(6, 7, 1);
+    g.addEdge(6, 8, 6);
+    g.addEdge(7, 8, 7);
+
+    cout << "Edges of MST are \n";
+    int mst_wt = g.kruskalMST();
+
+    cout << "\nWeight of MST is " << mst_wt;
+
+    return 0;
+
+}
+```
+
+##### Output
+
+```text
+
+Edges of MST are
+0 - 1
+2 - 8
+2 - 5
+6 - 7
+0 - 7
+2 - 3
+3 - 4
+5 - 6
+
+Weight of MST is 37
+```
+
+#### Prim's Algorithm
+
+Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph. This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized. The algorithm operates by building this tree one vertex at a time, from an arbitrary starting vertex, at each step adding the cheapest possible connection from the tree to another vertex.
+
+##### Pseudocode
+
+```text
+Prim(G, w, r)
+    for each u ∈ V[G]
+        key[u] ← ∞
+        π[u] ← NIL
+    key[r] ← 0
+    Q ← V[G]
+    while Q ≠ ∅
+        u ← EXTRACT-MIN(Q)
+        for each v ∈ Adj[u]
+            if v ∈ Q and w(u, v) < key[v]
+                π[v] ← u
+                key[v] ← w(u, v)
+```
+
+##### Python
+
+```python
+# Prim's algorithm
+
+
+class Graph:
+    def __init__(self, vertices):
+        self.V = vertices
+        self.graph = [[0 for column in range(vertices)] for row in range(vertices)]
+
+    def printMST(self, parent):
+        print("Edge \tWeight")
+        for i in range(1, self.V):
+            print(parent[i], "-", i, "\t", self.graph[i][parent[i]])
+
+    def minKey(self, key, mstSet):
+        min = float("inf")
+        for v in range(self.V):
+            if key[v] < min and mstSet[v] == False:
+                min = key[v]
+                min_index = v
+        return min_index
+
+    def primMST(self):
+        key = [float("inf")] * self.V
+        parent = [None] * self.V
+        key[0] = 0
+        mstSet = [False] * self.V
+        parent[0] = -1
+        for cout in range(self.V):
+            u = self.minKey(key, mstSet)
+            mstSet[u] = True
+            for v in range(self.V):
+                if (
+                    self.graph[u][v] > 0
+                    and mstSet[v] == False
+                    and key[v] > self.graph[u][v]
+                ):
+                    key[v] = self.graph[u][v]
+                    parent[v] = u
+        self.printMST(parent)
+
+
+g = Graph(5)
+
+g.graph = [
+    [0, 2, 0, 6, 0],
+    [2, 0, 3, 8, 5],
+    [0, 3, 0, 0, 7],
+    [6, 8, 0, 0, 9],
+    [0, 5, 7, 9, 0],
+]
+
+g.primMST()
+```
+
+##### Output
+
+```text
+Edge    Weight
+0 - 1     2
+1 - 2     3
+0 - 3     6
+1 - 4     5
+```
+
+##### C++
+
+```cpp
+// Prim's algorithm
+
+#include <bits/stdc++.h>
+using namespace std;
+
+# define INF 0x3f3f3f3f
+
+typedef pair<int, int> iPair;
+
+class Graph {
+    int V;
+    list< pair<int, int> > *adj;
+
+public:
+    Graph(int V);
+    void addEdge(int u, int v, int w);
+    void primMST();
+};
+
+Graph::Graph(int V) {
+    this->V = V;
+    adj = new list<iPair> [V];
+}
+
+void Graph::addEdge(int u, int v, int w) {
+    adj[u].push_back(make_pair(v, w));
+    adj[v].push_back(make_pair(u, w));
+}
+
+void Graph::primMST() {
+    priority_queue< iPair, vector <iPair> , greater<iPair> > pq;
+    int src = 0;
+    vector<int> key(V, INF);
+    vector<int> parent(V, -1);
+    vector<bool> inMST(V, false);
+    pq.push(make_pair(0, src));
+    key[src] = 0;
+    while (!pq.empty()) {
+        int u = pq.top().second;
+        pq.pop();
+        inMST[u] = true;
+        list< pair<int, int> >::iterator i;
+        for (i = adj[u].begin(); i != adj[u].end(); ++i) {
+            int v = (*i).first;
+            int weight = (*i).second;
+            if (inMST[v] == false && key[v] > weight) {
+                key[v] = weight;
+                pq.push(make_pair(key[v], v));
+                parent[v] = u;
+            }
+        }
+    }
+    for (int i = 1; i < V; ++i)
+        cout << parent[i] << " - " << i << endl;
+}
+
+int main() {
+    int V = 9;
+    Graph g(V);
+    g.addEdge(0, 1, 4);
+    g.addEdge(0, 7, 8);
+    g.addEdge(1, 2, 8);
+    g.addEdge(1, 7, 11);
+    g.addEdge(2, 3, 7);
+    g.addEdge(2, 8, 2);
+    g.addEdge(2, 5, 4);
+    g.addEdge(3, 4, 9);
+    g.addEdge(3, 5, 14);
+    g.addEdge(4, 5, 10);
+    g.addEdge(5, 6, 2);
+    g.addEdge(6, 7, 1);
+    g.addEdge(6, 8, 6);
+    g.addEdge(7, 8, 7);
+    g.primMST();
+    return 0;
+}
+```
+
+##### Output
+
+```text
+0 - 1
+1 - 2
+2 - 3
+2 - 5
+5 - 6
+6 - 7
+2 - 8
+```
+
+### Dynamic Programming
+
+Dynamic programming is a method for solving problems by breaking them down into smaller subproblems and storing the results of these subproblems to avoid computing them multiple times. It is mainly used for optimization problems, where multiple subproblems may have overlapping solutions. Dynamic programming algorithms are often used for problems that have optimal substructure, meaning that the optimal solution can be constructed from optimal solutions of its subproblems.
+
+One common approach to solving problems using dynamic programming is to use a bottom-up approach, where the smaller subproblems are solved first and the solutions are stored in a table or array. Then, the solutions to larger subproblems can be found by combining the stored solutions in a specific way. Another approach is to use a top-down approach, where the larger subproblems are solved first and the solutions are passed down to the smaller subproblems as needed.
+
+Dynamic programming can be applied to various types of problems, such as optimization, counting, and decision making. Some examples of problems that can be solved using dynamic programming include the Knapsack problem, the Longest Common Subsequence problem, and the Matrix Chain Multiplication problem.
+
+#### Knapsack Problem
+
+The knapsack problem is a problem in combinatorial optimization: Given a set of items, each with a weight and a value, determine the number of each item to include in a collection so that the total weight is less than or equal to a given limit and the total value is as large as possible. It derives its name from the problem faced by someone who is constrained by a fixed-size knapsack and must fill it with the most valuable items.
+
+##### Python
+
+```python
+# Knapsack problem
+
+def knapSack(W, wt, val, n):
+    K = [[0 for x in range(W + 1)] for x in range(n + 1)]
+    for i in range(n + 1):
+        for w in range(W + 1):
+            if i == 0 or w == 0:
+                K[i][w] = 0
+            elif wt[i - 1] <= w:
+                K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w])
+            else:
+                K[i][w] = K[i - 1][w]
+    return K[n][W]
+
+
+
+val = [60, 100, 120]
+
+wt = [10, 20, 30]
+
+W = 50
+
+n = len(val)
+
+print(knapSack(W, wt, val, n))
+```
+
+##### Output
+
+```text
+220
+```
+
+##### C++
+
+```cpp
+// Knapsack problem
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+int knapSack(int W, int wt[], int val[], int n) {
+    int i, w;
+    int K[n + 1][W + 1];
+    for (i = 0; i <= n; i++) {
+        for (w = 0; w <= W; w++) {
+            if (i == 0 || w == 0)
+                K[i][w] = 0;
+            else if (wt[i - 1] <= w)
+                K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
+            else
+                K[i][w] = K[i - 1][w];
+        }
+    }
+    return K[n][W];
+}
+
+int main() {
+    int val[] = {60, 100, 120};
+    int wt[] = {10, 20, 30};
+    int W = 50;
+    int n = sizeof(val) / sizeof(val[0]);
+    cout << knapSack(W, wt, val, n);
+    return 0;
+}
+```
+
+##### Output
+
+```text
+220
+```
+
+##### Java
+
+```java
+// Knapsack problem
+
+import java.util.*;
+
+class Knapsack {
+    static int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+
+    static int knapSack(int W, int wt[], int val[], int n) {
+        int i, w;
+        int K[][] = new int[n + 1][W + 1];
+        for (i = 0; i <= n; i++) {
+            for (w = 0; w <= W; w++) {
+                if (i == 0 || w == 0)
+                    K[i][w] = 0;
+                else if (wt[i - 1] <= w)
+                    K[i][w] = max(val[i - 1] + K[i - 1][w - wt[i - 1]], K[i - 1][w]);
+                else
+                    K[i][w] = K[i - 1][w];
+            }
+        }
+        return K[n][W];
+    }
+
+    public static void main(String args[]) {
+        int val[] = new int[]{60, 100, 120};
+        int wt[] = new int[]{10, 20, 30};
+        int W = 50;
+        int n = val.length;
+        System.out.println(knapSack(W, wt, val, n));
+    }
+}
+```
+
+##### Output
+
+```text
+220
+```
+
+#### Longest Common Subsequence
+
+The longest common subsequence \(LCS\) problem is the problem of finding the longest subsequence common to all sequences in a set of sequences. It differs from the longest common substring problem: unlike substrings, subsequences are not required to occupy consecutive positions within the original sequences.
+
+##### Python
+
+```python
+# Longest Common Subsequence
+
+def lcs(X, Y, m, n):
+    L = [[None] * (n + 1) for i in range(m + 1)]
+    for i in range(m + 1):
+        for j in range(n + 1):
+            if i == 0 or j == 0:
+                L[i][j] = 0
+            elif X[i - 1] == Y[j - 1]:
+                L[i][j] = L[i - 1][j - 1] + 1
+            else:
+                L[i][j] = max(L[i - 1][j], L[i][j - 1])
+    return L[m][n]
+
+
+
+
+X = "AGGTAB"
+Y = "GXTXAYB"
+print("Length of LCS is ", lcs(X, Y, len(X), len(Y)))
+```
+
+##### Output
+
+```text
+Length of LCS is  4
+```
+
+##### C++
+
+```cpp
+// Longest Common Subsequence
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+int lcs(char *X, char *Y, int m, int n) {
+    int L[m + 1][n + 1];
+    int i, j;
+    for (i = 0; i <= m; i++) {
+        for (j = 0; j <= n; j++) {
+            if (i == 0 || j == 0)
+                L[i][j] = 0;
+            else if (X[i - 1] == Y[j - 1])
+                L[i][j] = L[i - 1][j - 1] + 1;
+            else
+                L[i][j] = max(L[i - 1][j], L[i][j - 1]);
+        }
+    }
+    return L[m][n];
+}
+
+int main() {
+    char X[] = "AGGTAB";
+    char Y[] = "GXTXAYB";
+    int m = strlen(X);
+    int n = strlen(Y);
+    cout << "Length of LCS is " << lcs(X, Y, m, n);
+    return 0;
+}
+```
+
+##### Output
+
+```text
+Length of LCS is 4
+```
+
+##### Java
+
+```java
+// Longest Common Subsequence
+
+import java.util.*;
+
+class LCS {
+    static int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+
+    static int lcs(char[] X, char[] Y, int m, int n) {
+        int L[][] = new int[m + 1][n + 1];
+        int i, j;
+        for (i = 0; i <= m; i++) {
+            for (j = 0; j <= n; j++) {
+                if (i == 0 || j == 0)
+                    L[i][j] = 0;
+                else if (X[i - 1] == Y[j - 1])
+                    L[i][j] = L[i - 1][j - 1] + 1;
+                else
+                    L[i][j] = max(L[i - 1][j], L[i][j - 1]);
+            }
+        }
+        return L[m][n];
+    }
+
+    public static void main(String args[]) {
+        String s1 = "AGGTAB";
+        String s2 = "GXTXAYB";
+        char[] X = s1.toCharArray();
+        char[] Y = s2.toCharArray();
+        int m = X.length;
+        int n = Y.length;
+        System.out.println("Length of LCS is " + lcs(X, Y, m, n));
+    }
+}
+```
+
+##### Output
+
+```text
+Length of LCS is 4
+```
+
+#### Longest Increasing Subsequence
+
+The longest increasing subsequence \(LIS\) problem is to find the length of the longest subsequence of a given sequence such that all elements of the subsequence are sorted in increasing order. For example, the length of LIS for {10, 22, 9, 33, 21, 50, 41, 60, 80} is 6 and LIS is {10, 22, 33, 50, 60, 80}.
+
+##### Python
+
+```python
+# Longest Increasing Subsequence
+
+def lis(arr):
+    n = len(arr)
+    lis = [1] * n
+    for i in range(1, n):
+        for j in range(0, i):
+            if arr[i] > arr[j] and lis[i] < lis[j] + 1:
+                lis[i] = lis[j] + 1
+    maximum = 0
+    for i in range(n):
+        maximum = max(maximum, lis[i])
+    return maximum
+
+
+arr = [10, 22, 9, 33, 21, 50, 41, 60]
+
+print("Length of lis is", lis(arr))
+```
+
+##### Output
+
+```text
+Length of lis is 5
+```
+
+##### C++
+
+```cpp
+// Longest Increasing Subsequence
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int lis(int arr[], int n) {
+    int lis[n];
+    lis[0] = 1;
+    for (int i = 1; i < n; i++) {
+        lis[i] = 1;
+        for (int j = 0; j < i; j++)
+            if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+                lis[i] = lis[j] + 1;
+    }
+    return *max_element(lis, lis + n);
+}
+
+int main() {
+    int arr[] = {10, 22, 9, 33, 21, 50, 41, 60};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "Length of lis is " << lis(arr, n);
+    return 0;
+}
+```
+
+##### Output
+
+```text
+Length of lis is 5
+```
+
+##### Java
+
+```java
+// Longest Increasing Subsequence
+
+import java.util.*;
+
+
+class LIS {
+    static int lis(int arr[], int n) {
+        int lis[] = new int[n];
+        lis[0] = 1;
+        for (int i = 1; i < n; i++) {
+            lis[i] = 1;
+            for (int j = 0; j < i; j++)
+                if (arr[i] > arr[j] && lis[i] < lis[j] + 1)
+                    lis[i] = lis[j] + 1;
+        }
+        return Arrays.stream(lis).max().getAsInt();
+    }
+
+    public static void main(String args[]) {
+        int arr[] = {10, 22, 9, 33, 21, 50, 41, 60};
+        int n = arr.length;
+        System.out.println("Length of lis is " + lis(arr, n));
+    }
+}
+```
+
+##### Output
+
+```text
+Length of lis is 5
+```
+
+#### Longest Palindromic Subsequence
+
+Given a sequence, find the length of the longest palindromic subsequence in it. For example, if the given sequence is “BBABCBCAB”, then the output should be 7 as “BABCBAB” is the longest palindromic subsequence in it. “BBBBB” and “BBCBB” are also palindromic subsequences of the given sequence, but not the longest ones.
+
+##### Python
+
+```python
+# Longest Palindromic Subsequence
+
+def lps(str):
+    n = len(str)
+    L = [[0 for x in range(n)] for x in range(n)]
+    for i in range(n):
+        L[i][i] = 1
+    for cl in range(2, n + 1):
+        for i in range(n - cl + 1):
+            j = i + cl - 1
+            if str[i] == str[j] and cl == 2:
+                L[i][j] = 2
+            elif str[i] == str[j]:
+                L[i][j] = L[i + 1][j - 1] + 2
+            else:
+                L[i][j] = max(L[i][j - 1], L[i + 1][j])
+    return L[0][n - 1]
+
+
+
+
+
+
+
+
+str = "BBABCBCAB"
+
+print("The length of the LPS is " + str(lps(str)))
+```
+
+##### Output
+
+```text
+The length of the LPS is 7
+```
+
+##### C++
+
+```cpp
+// Longest Palindromic Subsequence
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int lps(string str) {
+    int n = str.length();
+    int i, j, cl;
+    int L[n][n];
+    for (i = 0; i < n; i++)
+        L[i][i] = 1;
+    for (cl = 2; cl <= n; cl++) {
+        for (i = 0; i < n - cl + 1; i++) {
+            j = i + cl - 1;
+            if (str[i] == str[j] && cl == 2)
+                L[i][j] = 2;
+            else if (str[i] == str[j])
+                L[i][j] = L[i + 1][j - 1] + 2;
+            else
+                L[i][j] = max(L[i][j - 1], L[i + 1][j]);
+        }
+    }
+    return L[0][n - 1];
+}
+
+int main() {
+    string seq = "BBABCBCAB";
+    int n = seq.length();
+    cout << "The length of the LPS is " << lps(seq);
+    return 0;
+}
+```
+
+##### Output
+
+```text
+The length of the LPS is 7
+```
+
+##### Java
+
+```java
+// Longest Palindromic Subsequence
+
+import java.util.*;
+
+class LPS {
+    static int lps(String str) {
+        int n = str.length();
+        int i, j, cl;
+        int L[][] = new int[n][n];
+        for (i = 0; i < n; i++)
+            L[i][i] = 1;
+        for (cl = 2; cl <= n; cl++) {
+            for (i = 0; i < n - cl + 1; i++) {
+                j = i + cl - 1;
+                if (str.charAt(i) == str.charAt(j) && cl == 2)
+                    L[i][j] = 2;
+                else if (str.charAt(i) == str.charAt(j))
+                    L[i][j] = L[i + 1][j - 1] + 2;
+                else
+                    L[i][j] = Math.max(L[i][j - 1], L[i + 1][j]);
+            }
+        }
+        return L[0][n - 1];
+    }
+
+    public static void main(String args[]) {
+        String seq = "BBABCBCAB";
+        int n = seq.length();
+        System.out.println("The length of the LPS is " + lps(seq));
+    }
+}
+```
+
+##### Output
+
+```text
+The length of the LPS is 7
+```
+
+#### Maxtrix Chain Multiplication
+
+Given a sequence of matrices, find the most efficient way to multiply these matrices together. The problem is not actually to perform the multiplications, but merely to decide in which order to perform the multiplications.
+
+We have many options to multiply a chain of matrices because matrix multiplication is associative. In other words, no matter how we parenthesize the product, the result will be the same. For example, if we had four matrices A, B, C, and D, we would have:
+
+```text
+(ABC)D = (AB)(CD) = A(BCD) = ....
+```
+
+However, the order in which we parenthesize the product affects the number of simple arithmetic operations needed to compute the product, or the efficiency.
+
+For example, suppose A is a 10 × 30 matrix, B is a 30 × 5 matrix, and C is a 5 × 60 matrix. Then,
+
+```text
+(AB)C = (10×30×5) + (10×5×60) = 1500 + 3000 = 4500
+```
+
+```text
+A(BC) = (10×5×60) + (30×5×60) = 3000 + 9000 = 12000
+```
+
+##### Python
+
+```python
+# Matrix Chain Multiplication
+
+def MatrixChainOrder(p, i, j):
+    if i == j:
+        return 0
+    _min = 999999999
+    for k in range(i, j):
+        count = (MatrixChainOrder(p, i, k) +
+                 MatrixChainOrder(p, k + 1, j) +
+                 p[i - 1] * p[k] * p[j])
+        if count < _min:
+            _min = count
+    return _min
+
+arr = [1, 2, 3, 4, 3]
+n = len(arr)
+print("Minimum number of multiplications is " +
+      str(MatrixChainOrder(arr, 1, n - 1)))
+```
+
+##### Output
+
+```text
+Minimum number of multiplications is 30
+```
+
+##### C++
+
+```cpp
+// Matrix Chain Multiplication
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int MatrixChainOrder(int p[], int i, int j) {
+    if (i == j)
+        return 0;
+    int _min = 999999999;
+    for (int k = i; k < j; k++) {
+        int count = MatrixChainOrder(p, i, k) +
+                    MatrixChainOrder(p, k + 1, j) +
+                    p[i - 1] * p[k] * p[j];
+        if (count < _min)
+            _min = count;
+    }
+    return _min;
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 3};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "Minimum number of multiplications is "
+         << MatrixChainOrder(arr, 1, n - 1);
+}
+```
+
+##### Output
+
+```text
+Minimum number of multiplications is 30
+```
+
+##### Java
+
+```java
+// Matrix Chain Multiplication
+
+import java.util.*;
+
+class MCM {
+    static int MatrixChainOrder(int p[], int i, int j) {
+        if (i == j)
+            return 0;
+        int _min = 999999999;
+        for (int k = i; k < j; k++) {
+            int count = MatrixChainOrder(p, i, k) +
+                        MatrixChainOrder(p, k + 1, j) +
+                        p[i - 1] * p[k] * p[j];
+            if (count < _min)
+                _min = count;
+        }
+        return _min;
+    }
+
+    public static void main(String args[]) {
+        int arr[] = {1, 2, 3, 4, 3};
+        int n = arr.length;
+        System.out.println("Minimum number of multiplications is " +
+                           MatrixChainOrder(arr, 1, n - 1));
+    }
+}
+```
+
+##### Output
+
+```text
+Minimum number of multiplications is 30
+```
+
+#### Rod Cutting
+
+Given a rod of length n inches and an array of prices that contains prices of all pieces of size smaller than n. Determine the maximum value obtainable by cutting up the rod and selling the pieces. For example, if length of the rod is 8 and the values of different pieces are given as following, then the maximum obtainable value is 22 \(by cutting in two pieces of lengths 2 and 6\)
+
+```text
+length   | 1   2   3   4   5   6   7   8
+--------------------------------------------
+price    | 1   5   8   9  10  17  17  20
+```
+
+And if the prices are as following, then the maximum obtainable value is 24 \(by cutting in eight pieces of length 1\)
+
+```text
+length   | 1   2   3   4   5   6   7   8
+--------------------------------------------
+price    | 3   5   8   9  10  17  17  20
+```
+
+##### Python
+
+```python
+# Rod Cutting
+
+def cutRod(price, n):
+    if n <= 0:
+        return 0
+    max_val = -999999999
+    for i in range(0, n):
+        max_val = max(max_val, price[i] + cutRod(price, n - i - 1))
+    return max_val
+
+arr = [1, 5, 8, 9, 10, 17, 17, 20]
+size = len(arr)
+print("Maximum Obtainable Value is " + str(cutRod(arr, size)))
+```
+
+##### Output
+
+```text
+Maximum Obtainable Value is 22
+```
+
+##### C++
+
+```cpp
+// Rod Cutting
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int cutRod(int price[], int n) {
+    if (n <= 0)
+        return 0;
+    int max_val = -999999999;
+    for (int i = 0; i < n; i++)
+        max_val = max(max_val, price[i] + cutRod(price, n - i - 1));
+    return max_val;
+}
+
+int main() {
+    int arr[] = {1, 5, 8, 9, 10, 17, 17, 20};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    cout << "Maximum Obtainable Value is " << cutRod(arr, size);
+}
+```
+
+##### Output
+
+```text
+Maximum Obtainable Value is 22
+```
+
+##### Java
+
+```java
+// Rod Cutting
+
+import java.util.*;
+
+class RodCutting {
+    static int cutRod(int price[], int n) {
+        if (n <= 0)
+            return 0;
+        int max_val = -999999999;
+        for (int i = 0; i < n; i++)
+            max_val = Math.max(max_val, price[i] + cutRod(price, n - i - 1));
+        return max_val;
+    }
+
+    public static void main(String args[]) {
+        int arr[] = {1, 5, 8, 9, 10, 17, 17, 20};
+        int size = arr.length;
+        System.out.println("Maximum Obtainable Value is " + cutRod(arr, size));
+    }
+}
+```
+
+##### Output
+
+```text
+Maximum Obtainable Value is 22
+```
+
+#### Subset Sum
+
+Given a set of non-negative integers, and a value sum, determine if there is a subset of the given set with sum equal to given sum.
+
+##### Python
+
+```python
+# Subset Sum
+
+def isSubsetSum(set, n, sum):
+    if sum == 0:
+        return True
+    if n == 0 and sum != 0:
+        return False
+    if set[n - 1] > sum:
+        return isSubsetSum(set, n - 1, sum)
+    return (isSubsetSum(set, n - 1, sum) or
+            isSubsetSum(set, n - 1, sum - set[n - 1]))
+
+set = [3, 34, 4, 12, 5, 2]
+sum = 9
+n = len(set)
+if (isSubsetSum(set, n, sum) == True):
+    print("Found a subset with given sum")
+else:
+    print("No subset with given sum")
+```
+
+##### Output
+
+```text
+Found a subset with given sum
+```
+
+##### C++
+
+```cpp
+// Subset Sum
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isSubsetSum(int set[], int n, int sum) {
+    if (sum == 0)
+        return true;
+    if (n == 0 && sum != 0)
+        return false;
+    if (set[n - 1] > sum)
+        return isSubsetSum(set, n - 1, sum);
+    return isSubsetSum(set, n - 1, sum) ||
+           isSubsetSum(set, n - 1, sum - set[n - 1]);
+}
+
+int main() {
+    int set[] = {3, 34, 4, 12, 5, 2};
+    int sum = 9;
+    int n = sizeof(set) / sizeof(set[0]);
+    if (isSubsetSum(set, n, sum) == true)
+        cout << "Found a subset with given sum";
+    else
+        cout << "No subset with given sum";
+}
+```
+
+##### Output
+
+```text
+Found a subset with given sum
+```
+
+##### Java
+
+```java
+// Subset Sum
+
+import java.util.*;
+
+class SubsetSum {
+    static boolean isSubsetSum(int set[], int n, int sum) {
+        if (sum == 0)
+            return true;
+        if (n == 0 && sum != 0)
+            return false;
+        if (set[n - 1] > sum)
+            return isSubsetSum(set, n - 1, sum);
+        return isSubsetSum(set, n - 1, sum) ||
+               isSubsetSum(set, n - 1, sum - set[n - 1]);
+    }
+
+    public static void main(String args[]) {
+        int set[] = {3, 34, 4, 12, 5, 2};
+        int sum = 9;
+        int n = set.length;
+        if (isSubsetSum(set, n, sum) == true)
+            System.out.println("Found a subset with given sum");
+        else
+            System.out.println("No subset with given sum");
+    }
+}
+```
+
+##### Output
+
+```text
+Found a subset with given sum
 ```
