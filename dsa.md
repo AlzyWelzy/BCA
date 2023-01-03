@@ -12,6 +12,7 @@
       - [Array Deletion](#array-deletion)
     - [Linked Lists](#linked-lists)
       - [Linked List Declaration](#linked-list-declaration)
+      - [Linked List Traversal](#linked-list-traversal)
 
 ## Data Structures
 
@@ -175,3 +176,206 @@ class LinkedList:
         current.next = node
     ```
 ````
+
+In Java:
+
+```java
+class Node {
+  int data;
+  Node next;
+
+  Node(int data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  Node head;
+
+  LinkedList() {
+    this.head = null;
+  }
+
+  void insert(int data) {
+    Node node = new Node(data);
+    if (head == null) {
+      head = node;
+    } else {
+      Node current = head;
+      while (current.next != null) {
+        current = current.next;
+      }
+      current.next = node;
+    }
+  }
+}
+```
+
+In C/C++:
+
+```c
+struct Node {
+  int data;
+  struct Node *next;
+};
+
+struct LinkedList {
+  struct Node *head;
+};
+
+void insert(struct LinkedList *list, int data) {
+  struct Node *node = (struct Node *)malloc(sizeof(struct Node));
+  node->data = data;
+  node->next = NULL;
+  if (list->head == NULL) {
+    list->head = node;
+  } else {
+    struct Node *current = list->head;
+    while (current->next != NULL) {
+      current = current->next;
+    }
+    current->next = node;
+  }
+}
+```
+
+In JavaScript:
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  insert(data) {
+    const node = new Node(data);
+    if (this.head === null) {
+      this.head = node;
+    } else {
+      let current = this.head;
+      while (current.next !== null) {
+        current = current.next;
+      }
+      current.next = node;
+    }
+  }
+}
+```
+
+#### Linked List Traversal
+
+In Python:
+
+```python
+current = linked_list.head
+while current is not None:
+  print(current.data)
+  current = current.next
+```
+
+In Java:
+
+```java
+Node current = linked_list.head;
+while (current != null) {
+  System.out.println(current.data);
+  current = current.next;
+}
+```
+
+In C/C++:
+
+```c
+struct Node *current = linked_list->head;
+```
+
+In JavaScript:
+
+```javascript
+let current = linked_list.head;
+while (current !== null) {
+  console.log(current.data);
+  current = current.next;
+}
+```
+
+#### Linked List Insertion
+
+In Python:
+
+```python
+node = Node(data)
+node.next = linked_list.head
+linked_list.head = node
+```
+
+In Java:
+
+```java
+Node node = new Node(data);
+node.next = linked_list.head;
+linked_list.head = node;
+```
+
+In C/C++:
+
+```c
+struct Node *node = (struct Node *)malloc(sizeof(struct Node));
+node->data = data;
+node->next = linked_list->head;
+linked_list->head = node;
+```
+
+In JavaScript:
+
+```javascript
+const node = new Node(data);
+node.next = linked_list.head;
+linked_list.head = node;
+```
+
+#### Linked List Deletion
+
+In Python:
+
+```python
+linked_list.head = linked_list.head.next
+```
+
+In Java:
+
+```java
+linked_list.head = linked_list.head.next;
+```
+
+In C/C++:
+
+```c
+linked_list->head = linked_list->head->next;
+```
+
+In JavaScript:
+
+```javascript
+linked_list.head = linked_list.head.next;
+```
+
+### Stacks
+
+A stack is a linear data structure which follows a particular order in which the operations are performed. The order may be LIFO(Last In First Out) or FILO(First In Last Out). Mainly the following three basic operations are performed in the stack:
+
+- Push: Adds an item in the stack. If the stack is full, then it is said to be an Overflow condition.
+
+- Pop: Removes an item from the stack. The items are popped in the reversed order in which they are pushed. If the stack is empty, then it is said to be an Underflow condition.
+
+- Peek or Top: Returns top element of stack.
+
+- isEmpty: Returns true if stack is empty, else false
