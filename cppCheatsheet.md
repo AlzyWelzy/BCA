@@ -56,7 +56,7 @@ float price = 9.99;
 C++ supports a variety of operators for performing operations on variables. The following table lists some of the most commonly used operators:
 
 | Operator | Description              |
-| -------- | ------------------------ | --- | ---------- |
+| -------- | ------------------------ |
 | `+`      | Addition                 |
 | `-`      | Subtraction              |
 | `*`      | Multiplication           |
@@ -72,8 +72,8 @@ C++ supports a variety of operators for performing operations on variables. The 
 | `>=`     | Greater than or equal to |
 | `<=`     | Less than or equal to    |
 | `&&`     | Logical AND              |
-| `        |                          | `   | Logical OR |
 | `!`      | Logical NOT              |
+| `\|\|`   | Logical OR               |
 
 ### Control structures
 

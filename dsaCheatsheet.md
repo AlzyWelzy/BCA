@@ -143,41 +143,41 @@
         - [Output](#output-2)
         - [Java](#java-22)
         - [Output](#output-3)
-      - [Depth-first search](#depth-first-search)
-        - [C](#c-23)
-        - [Output](#output-4)
-        - [C++](#c-24)
-        - [Output](#output-5)
-        - [Java](#java-23)
-        - [Output](#output-6)
-        - [Python](#python-23)
-        - [Output](#output-7)
-      - [Dijkstra's Algorithm](#dijkstras-algorithm)
-        - [C](#c-25)
-        - [Output](#output-8)
-        - [Java](#java-24)
-        - [Output](#output-9)
-      - [Floyd-Warshall Algorithm](#floyd-warshall-algorithm)
-        - [C](#c-26)
-        - [Output](#output-10)
-        - [Java](#java-25)
-        - [Output](#output-11)
-      - [Bellman-Ford Algorithm](#bellman-ford-algorithm)
-        - [C](#c-27)
-        - [Output](#output-12)
-      - [Kruskal's Algorithm](#kruskals-algorithm)
-        - [C](#c-28)
-        - [Output](#output-13)
-        - [Python](#python-24)
-        - [Output](#output-14)
-        - [C++](#c-29)
-        - [Output](#output-15)
-      - [Prim's Algorithm](#prims-algorithm)
-        - [Pseudocode](#pseudocode-5)
-        - [Python](#python-25)
-        - [Output](#output-16)
-        - [C++](#c-30)
-        - [Output](#output-17)
+    - [Depth-first search](#depth-first-search)
+      - [C](#c-23)
+      - [Output](#output-4)
+      - [C++](#c-24)
+      - [Output](#output-5)
+      - [Java](#java-23)
+      - [Output](#output-6)
+      - [Python](#python-23)
+      - [Output](#output-7)
+    - [Dijkstra's Algorithm](#dijkstras-algorithm)
+      - [C](#c-25)
+      - [Output](#output-8)
+      - [Java](#java-24)
+      - [Output](#output-9)
+    - [Floyd-Warshall Algorithm](#floyd-warshall-algorithm)
+      - [C](#c-26)
+      - [Output](#output-10)
+      - [Java](#java-25)
+      - [Output](#output-11)
+    - [Bellman-Ford Algorithm](#bellman-ford-algorithm)
+      - [C](#c-27)
+      - [Output](#output-12)
+    - [Kruskal's Algorithm](#kruskals-algorithm)
+      - [C](#c-28)
+      - [Output](#output-13)
+      - [Python](#python-24)
+      - [Output](#output-14)
+      - [C++](#c-29)
+      - [Output](#output-15)
+    - [Prim's Algorithm](#prims-algorithm)
+      - [Pseudocode](#pseudocode-5)
+      - [Python](#python-25)
+      - [Output](#output-16)
+      - [C++](#c-30)
+      - [Output](#output-17)
     - [Dynamic Programming](#dynamic-programming)
       - [Knapsack Problem](#knapsack-problem)
         - [Python](#python-26)
@@ -4473,11 +4473,11 @@ Following is Depth First Traversal (starting from vertex 2)
 2 0 1 3
 ```
 
-#### Dijkstra's Algorithm
+### Dijkstra's Algorithm
 
 Dijkstra's algorithm is an algorithm for finding the shortest paths between nodes in a graph, which may represent, for example, road networks. It was conceived by computer scientist Edsger W. Dijkstra in 1956 and published three years later.
 
-##### C
+#### C
 
 ```c
 // Dijkstra's algorithm
@@ -4544,7 +4544,7 @@ int main() {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 Vertex           Distance from Source
@@ -4559,7 +4559,7 @@ Vertex           Distance from Source
 8                14
 ```
 
-##### Java
+#### Java
 
 ```java
 // Dijkstra's algorithm
@@ -4635,7 +4635,7 @@ class ShortestPath {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 Vertex           Distance from Source
@@ -4650,11 +4650,11 @@ Vertex           Distance from Source
 8                14
 ```
 
-#### Floyd-Warshall Algorithm
+### Floyd-Warshall Algorithm
 
 Floyd–Warshall algorithm is an algorithm for finding shortest paths in a weighted graph with positive or negative edge weights (but with no negative cycles). A single execution of the algorithm will find the lengths (summed weights) of the shortest paths between all pairs of vertices, though it does not return details of the paths themselves.
 
-##### C
+#### C
 
 ```c
 // Floyd-Warshall algorithm
@@ -4709,7 +4709,7 @@ int main() {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 The following matrix shows the shortest distances between every pair of vertices
@@ -4719,7 +4719,7 @@ The following matrix shows the shortest distances between every pair of vertices
     INF     INF    INF      0
 ```
 
-##### Java
+#### Java
 
 ```java
 // Floyd-Warshall algorithm
@@ -4778,7 +4778,7 @@ class FloydWarshall {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 The following matrix shows the shortest distances between every pair of vertices
@@ -4788,11 +4788,11 @@ INF INF 0   1
 INF INF INF 0
 ```
 
-#### Bellman-Ford Algorithm
+### Bellman-Ford Algorithm
 
 The Bellman–Ford algorithm is an algorithm that computes shortest paths from a single source vertex to all of the other vertices in a weighted digraph. It is slower than Dijkstra's algorithm for the same problem, but more versatile, as it is capable of handling graphs in which some of the edge weights are negative numbers.
 
-##### C
+#### C
 
 ```c
 
@@ -4904,7 +4904,7 @@ int main() {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 Vertex   Distance from Source
@@ -4915,11 +4915,11 @@ Vertex   Distance from Source
 4                1
 ```
 
-#### Kruskal's Algorithm
+### Kruskal's Algorithm
 
 Kruskal's algorithm is a minimum spanning tree algorithm which finds an edge of the least possible weight that connects any two trees in the forest. It is a greedy algorithm in graph theory as in each step it adds the next lowest-weight edge that will not form a cycle to the minimum spanning tree.
 
-##### C
+#### C
 
 ```c
 
@@ -5027,7 +5027,7 @@ int main() {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 
@@ -5038,7 +5038,7 @@ Following are the edges in the constructed MST
 0 -- 1 == 10
 ```
 
-##### Python
+#### Python
 
 ```python
 # Kruskal's algorithm
@@ -5105,7 +5105,7 @@ g.add_edge(2, 3, 4)
 g.kruskal_mst()
 ```
 
-##### Output
+#### Output
 
 ```text
 
@@ -5116,7 +5116,7 @@ Following are the edges in the constructed MST
 0 -- 1 == 10
 ```
 
-##### C++
+#### C++
 
 ```cpp
 // Kruskal's algorithm
@@ -5229,7 +5229,7 @@ int main() {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 
@@ -5246,11 +5246,11 @@ Edges of MST are
 Weight of MST is 37
 ```
 
-#### Prim's Algorithm
+### Prim's Algorithm
 
 Prim's algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph. This means it finds a subset of the edges that forms a tree that includes every vertex, where the total weight of all the edges in the tree is minimized. The algorithm operates by building this tree one vertex at a time, from an arbitrary starting vertex, at each step adding the cheapest possible connection from the tree to another vertex.
 
-##### Pseudocode
+#### Pseudocode
 
 ```text
 Prim(G, w, r)
@@ -5267,7 +5267,7 @@ Prim(G, w, r)
                 key[v] ← w(u, v)
 ```
 
-##### Python
+#### Python
 
 ```python
 # Prim's algorithm
@@ -5324,7 +5324,7 @@ g.graph = [
 g.primMST()
 ```
 
-##### Output
+#### Output
 
 ```text
 Edge    Weight
@@ -5334,7 +5334,7 @@ Edge    Weight
 1 - 4     5
 ```
 
-##### C++
+#### C++
 
 ```cpp
 // Prim's algorithm
@@ -5415,7 +5415,7 @@ int main() {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 0 - 1
