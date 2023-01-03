@@ -315,10 +315,10 @@ int main() {
 }
 ```
 
-## References
+<!-- ## References
 
 - [C++ Tutorial](https://www.tutorialspoint.com/cplusplus/index.htm)
-- [C++ Reference](http://www.cplusplus.com/reference/)
+- [C++ Reference](http://www.cplusplus.com/reference/) -->
 
 ## Exercises
 

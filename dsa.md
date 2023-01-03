@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [Data Structures and Algorithms Cheatsheet](#data-structures-and-algorithms-cheatsheet)
+- [Data Structures and Algorithms Cheatsheet with Explanation and Code Snippets in Python, Java, C/C++, and JavaScript](#data-structures-and-algorithms-cheatsheet-with-explanation-and-code-snippets-in-python-java-cc-and-javascript)
   - [Table of Contents](#table-of-contents)
   - [Data Structures](#data-structures)
     - [Arrays](#arrays)
@@ -12,37 +12,6 @@
       - [Array Deletion](#array-deletion)
     - [Linked Lists](#linked-lists)
       - [Linked List Declaration](#linked-list-declaration)
-      - [Linked List Traversal](#linked-list-traversal)
-      - [Linked List Insertion](#linked-list-insertion)
-      - [Linked List Deletion](#linked-list-deletion)
-  - [Algorithms](#algorithms)
-    - [Sorting](#sorting)
-      - [Bubble Sort](#bubble-sort)
-      - [Selection Sort](#selection-sort)
-      - [Insertion Sort](#insertion-sort)
-      - [Merge Sort](#merge-sort)
-      - [Quick Sort](#quick-sort)
-    - [Searching](#searching)
-      - [Linear Search](#linear-search)
-      - [Binary Search](#binary-search)
-      - [Jump Search](#jump-search)
-      - [Interpolation Search](#interpolation-search)
-      - [Exponential Search](#exponential-search)
-      - [Fibonacci Search](#fibonacci-search)
-    - [Graphs](#graphs)
-      - [Breadth First Search](#breadth-first-search)
-      - [Depth First Search](#depth-first-search)
-      - [Dijkstra's Algorithm](#dijkstras-algorithm)
-      - [Floyd Warshall](#floyd-warshall)
-      - [Kruskal's Algorithm](#kruskals-algorithm)
-      - [Prim's Algorithm](#prims-algorithm)
-    - [Dynamic Programming](#dynamic-programming)
-      - [Knapsack Problem](#knapsack-problem)
-      - [Longest Common Subsequence](#longest-common-subsequence)
-      - [Matrix Chain Multiplication](#matrix-chain-multiplication)
-      - [Rod Cutting](#rod-cutting)
-      - [Subset Sum](#subset-sum)
-    - [Mathematics](#mathematics)
 
 ## Data Structures
 
@@ -112,3 +81,97 @@ for (let i = 0; i < array.length; i++) {
 ```
 
 #### Array Insertion
+
+In Python:
+
+```python
+array.insert(0, 0)
+```
+
+In Java:
+
+```java
+int[] newArray = new int[array.length + 1];
+newArray[0] = 0;
+System.arraycopy(array, 0, newArray, 1, array.length);
+array = newArray;
+```
+
+In C/C++:
+
+```c
+int newArray[sizeof(array) / sizeof(array[0]) + 1];
+newArray[0] = 0;
+for (int i = 1; i < sizeof(newArray) / sizeof(newArray[0]); i++) {
+  newArray[i] = array[i - 1];
+}
+array = newArray;
+```
+
+In JavaScript:
+
+```javascript
+array.unshift(0);
+```
+
+#### Array Deletion
+
+In Python:
+
+```python
+array.pop(0)
+```
+
+In Java:
+
+```java
+int[] newArray = new int[array.length - 1];
+System.arraycopy(array, 1, newArray, 0, array.length - 1);
+array = newArray;
+```
+
+In C/C++:
+
+```c
+int newArray[sizeof(array) / sizeof(array[0]) - 1];
+for (int i = 0; i < sizeof(newArray) / sizeof(newArray[0]); i++) {
+  newArray[i] = array[i + 1];
+}
+array = newArray;
+```
+
+In JavaScript:
+
+```javascript
+array.shift();
+```
+
+### Linked Lists
+
+A linked list is a linear data structure, in which the elements are not stored at contiguous memory locations. The elements in a linked list are linked using pointers. Each element in a linked list is called a node. Each node contains two items: the data stored and a link to the next node. The data can be any valid data type. The last node has a link to null. The entry point into a linked list is called the head of the list. It should be noted that head is not a separate node, but the reference to the first node. If the list is empty, then the head is a null reference. A single node is not a linked list because it does not contain any link to the next node. A linked list is represented by a pointer to the first node of the linked list. The last node points to null. It should be noted that we can traverse the linked list in only forward direction. We cannot move backwards.
+
+#### Linked List Declaration
+
+In Python:
+
+````python
+class Node:
+  def __init__(self, data):
+    self.data = data
+    self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insert(self, data):
+        node = Node(data)
+        if self.head is None:
+        self.head = node
+        else:
+        current = self.head
+        while current.next is not None:
+            current = current.next
+        current.next = node
+    ```
+````
