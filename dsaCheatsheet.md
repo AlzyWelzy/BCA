@@ -133,6 +133,8 @@
         - [Java](#java-21)
         - [Python](#python-21)
   - [Graphs](#graphs)
+    - [Breadth-first search](#breadth-first-search)
+      - [Algorithm](#algorithm-2)
 
 ## Data Structures
 
@@ -3661,6 +3663,41 @@ print("Found at index:", fibonacciSearch(arr, x, n))
 
 ## Graphs
 
-A graph is a non-linear data structure consisting of nodes and edges. The nodes are sometimes also referred to as vertices and the edges are lines or arcs that connect any two nodes in the graph. More formally a Graph can be defined as, a Graph consists of a finite set of vertices(or nodes) and set of Edges which connect a pair of nodes.
+A graph is a non-linear data structure that consists of nodes (also called vertices) and edges. The edges are lines or arcs that connect any two nodes in the graph. More formally, a graph consists of a finite set of vertices and a set of edges that connect pairs of nodes.
 
-Graphs are used to solve many real-life problems. Graphs are used to represent networks. The networks may include paths in a city or telephone network or circuit network. Graphs are also used in social networks like linkedIn, Facebook. For example, in Facebook, each person is represented with a vertex(or node). Each node is a structure and contains information like person id, name,
+Graphs are used to solve many real-life problems, such as representing networks (e.g. paths in a city or telephone network, circuit network). They are also used in social networks (e.g. LinkedIn, Facebook) where each person is represented by a vertex and the edges represent relationships between people (e.g. friendships, family relationships).
+
+There are several ways to represent a graph in computer memory, including:
+
+- Adjacency list: stores a list of all the neighbors for each node
+- Adjacency matrix: stores a matrix of 0s and 1s indicating the presence or absence of an edge between two nodes
+
+There are also several algorithms for traversing and searching graphs, such as:
+
+- Depth-first search
+- Breadth-first search
+
+These algorithms are used to find paths between nodes, compute the shortest path between two nodes, or search for specific nodes or edges in the graph.
+
+### Breadth-first search
+
+Breadth-first search \(BFS\) is an algorithm for traversing or searching a graph. It starts at the root node and explores all the neighboring nodes. Then, for each of those nodes, it explores their unexplored neighbors, and so on, until it finds the goal.
+
+##### Algorithm
+
+1. Dequeue a node from the queue and examine it.
+2. If the node contains the goal, return the node.
+3. Otherwise, enqueue all of the node's unexplored neighbors and mark the node as explored.
+4. If the queue is empty and the goal has not been found, return null to indicate failure.
+5. Repeat from step 2 until the goal is found or the queue is empty.
+
+##### C
+
+```c
+// Breadth-first search
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+```
