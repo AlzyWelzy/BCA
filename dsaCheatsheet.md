@@ -53,114 +53,164 @@
         - [C++](#c)
         - [JavaScript (ES6)](#javascript-es6)
         - [Python](#python-9)
+    - [Stacks and Queues](#stacks-and-queues)
+      - [Stacks](#stacks)
+        - [Stack Operations](#stack-operations)
+          - [Push](#push)
+          - [Pop](#pop)
+          - [Peek](#peek)
+          - [isEmpty](#isempty)
+        - [Stack Implementation](#stack-implementation)
+          - [Array Implementation](#array-implementation)
+          - [Linked List Implementation](#linked-list-implementation)
+      - [Queues](#queues)
+        - [Queue Operations](#queue-operations)
+          - [Enqueue](#enqueue)
+          - [Dequeue](#dequeue)
+          - [Peek](#peek-1)
+          - [isEmpty](#isempty-1)
+        - [Queue Implementation](#queue-implementation)
+          - [Array Implementation](#array-implementation-1)
+          - [Linked List Implementation](#linked-list-implementation-1)
+      - [Trees](#trees)
+        - [Tree Operations](#tree-operations)
+          - [Insert](#insert)
+          - [Delete](#delete)
+          - [Search](#search)
+          - [isEmpty](#isempty-2)
+        - [Tree Implementation](#tree-implementation)
+          - [Array Implementation](#array-implementation-2)
+          - [Linked List Implementation](#linked-list-implementation-2)
+    - [Examples of Stacks and Queues using C/C++, Java, Python, and JavaScript](#examples-of-stacks-and-queues-using-cc-java-python-and-javascript)
+      - [Stack](#stack)
+        - [C/C++](#cc-8)
+        - [Java](#java-9)
+        - [Python](#python-10)
+        - [JavaScript](#javascript-8)
+      - [Queue](#queue)
+        - [C/C++](#cc-9)
+        - [Java](#java-10)
+        - [Python](#python-11)
+        - [JavaScript](#javascript-9)
+    - [Examples of Trees using C/C++, Java, Python, and JavaScript](#examples-of-trees-using-cc-java-python-and-javascript)
+      - [Binary Tree](#binary-tree)
+        - [C/C++](#cc-10)
+        - [Java](#java-11)
+        - [Python](#python-12)
+        - [JavaScript](#javascript-10)
+      - [Binary Search Tree](#binary-search-tree)
+        - [C/C++](#cc-11)
+        - [Java](#java-12)
+        - [Python](#python-13)
+        - [JavaScript](#javascript-11)
   - [Algorithms](#algorithms)
     - [Sorting](#sorting)
       - [Bubble Sort](#bubble-sort)
         - [C++](#c-1)
         - [JavaScript (ES6)](#javascript-es6-1)
-        - [Java](#java-9)
-        - [Python](#python-10)
+        - [Java](#java-13)
+        - [Python](#python-14)
       - [Selection Sort](#selection-sort)
         - [C++](#c-2)
         - [JavaScript (ES6)](#javascript-es6-2)
-        - [Java](#java-10)
-        - [Python](#python-11)
+        - [Java](#java-14)
+        - [Python](#python-15)
       - [Insertion Sort](#insertion-sort)
         - [C++](#c-3)
         - [JavaScript (ES6)](#javascript-es6-3)
-        - [Java](#java-11)
-        - [Python](#python-12)
+        - [Java](#java-15)
+        - [Python](#python-16)
       - [Merge Sort](#merge-sort)
         - [C++](#c-4)
         - [JavaScript (ES6)](#javascript-es6-4)
-        - [Java](#java-12)
-        - [Python](#python-13)
+        - [Java](#java-16)
+        - [Python](#python-17)
         - [C++](#c-5)
       - [Quick Sort](#quick-sort)
-        - [Java](#java-13)
-        - [Python](#python-14)
+        - [Java](#java-17)
+        - [Python](#python-18)
         - [C++](#c-6)
-        - [JavaScript](#javascript-8)
+        - [JavaScript](#javascript-12)
       - [Heap Sort](#heap-sort)
-        - [Java](#java-14)
-        - [Python](#python-15)
+        - [Java](#java-18)
+        - [Python](#python-19)
         - [C++](#c-7)
-        - [JavaScript](#javascript-9)
+        - [JavaScript](#javascript-13)
     - [Searching](#searching)
       - [Linear Search](#linear-search)
         - [Pseudocode](#pseudocode)
         - [C](#c-8)
-        - [Python](#python-16)
+        - [Python](#python-20)
         - [C++](#c-9)
-        - [JavaScript](#javascript-10)
-        - [Java](#java-15)
+        - [JavaScript](#javascript-14)
+        - [Java](#java-19)
       - [Binary Search](#binary-search)
         - [Pseudocode](#pseudocode-1)
         - [C](#c-10)
-        - [Python](#python-17)
+        - [Python](#python-21)
         - [C++](#c-11)
-        - [JavaScript](#javascript-11)
-        - [Java](#java-16)
+        - [JavaScript](#javascript-15)
+        - [Java](#java-20)
       - [Jump Search](#jump-search)
         - [Pseudocode](#pseudocode-2)
         - [C](#c-12)
-        - [Python](#python-18)
+        - [Python](#python-22)
         - [C++](#c-13)
-        - [JavaScript](#javascript-12)
-        - [Java](#java-17)
+        - [JavaScript](#javascript-16)
+        - [Java](#java-21)
       - [Interpolation search](#interpolation-search)
         - [C](#c-14)
         - [C++](#c-15)
-        - [JavaScript](#javascript-13)
-        - [Java](#java-18)
+        - [JavaScript](#javascript-17)
+        - [Java](#java-22)
       - [Jump search](#jump-search-1)
         - [Pseudocode](#pseudocode-3)
         - [C](#c-16)
         - [C++](#c-17)
-        - [Java](#java-19)
-        - [Python](#python-19)
+        - [Java](#java-23)
+        - [Python](#python-23)
       - [Exponential Search](#exponential-search)
         - [Algorithm](#algorithm)
         - [Pseudocode](#pseudocode-4)
         - [C](#c-18)
         - [C++](#c-19)
-        - [Java](#java-20)
-        - [Python](#python-20)
+        - [Java](#java-24)
+        - [Python](#python-24)
       - [Fibonacci Search](#fibonacci-search)
         - [Algorithm](#algorithm-1)
         - [Complexity](#complexity)
         - [C](#c-20)
-        - [Java](#java-21)
-        - [Python](#python-21)
+        - [Java](#java-25)
+        - [Python](#python-25)
   - [Graphs](#graphs)
     - [Breadth-first search](#breadth-first-search)
-      - [Algorithm](#algorithm-2)
+        - [Algorithm](#algorithm-2)
         - [C](#c-21)
         - [Output](#output)
-        - [Python](#python-22)
+        - [Python](#python-26)
         - [Output](#output-1)
         - [C++](#c-22)
         - [Output](#output-2)
-        - [Java](#java-22)
+        - [Java](#java-26)
         - [Output](#output-3)
     - [Depth-first search](#depth-first-search)
       - [C](#c-23)
       - [Output](#output-4)
       - [C++](#c-24)
       - [Output](#output-5)
-      - [Java](#java-23)
+      - [Java](#java-27)
       - [Output](#output-6)
-      - [Python](#python-23)
+      - [Python](#python-27)
       - [Output](#output-7)
     - [Dijkstra's Algorithm](#dijkstras-algorithm)
       - [C](#c-25)
       - [Output](#output-8)
-      - [Java](#java-24)
+      - [Java](#java-28)
       - [Output](#output-9)
     - [Floyd-Warshall Algorithm](#floyd-warshall-algorithm)
       - [C](#c-26)
       - [Output](#output-10)
-      - [Java](#java-25)
+      - [Java](#java-29)
       - [Output](#output-11)
     - [Bellman-Ford Algorithm](#bellman-ford-algorithm)
       - [C](#c-27)
@@ -168,65 +218,65 @@
     - [Kruskal's Algorithm](#kruskals-algorithm)
       - [C](#c-28)
       - [Output](#output-13)
-      - [Python](#python-24)
+      - [Python](#python-28)
       - [Output](#output-14)
       - [C++](#c-29)
       - [Output](#output-15)
     - [Prim's Algorithm](#prims-algorithm)
       - [Pseudocode](#pseudocode-5)
-      - [Python](#python-25)
+      - [Python](#python-29)
       - [Output](#output-16)
       - [C++](#c-30)
       - [Output](#output-17)
     - [Dynamic Programming](#dynamic-programming)
       - [Knapsack Problem](#knapsack-problem)
-        - [Python](#python-26)
+        - [Python](#python-30)
         - [Output](#output-18)
         - [C++](#c-31)
         - [Output](#output-19)
-        - [Java](#java-26)
+        - [Java](#java-30)
         - [Output](#output-20)
       - [Longest Common Subsequence](#longest-common-subsequence)
-        - [Python](#python-27)
+        - [Python](#python-31)
         - [Output](#output-21)
         - [C++](#c-32)
         - [Output](#output-22)
-        - [Java](#java-27)
+        - [Java](#java-31)
         - [Output](#output-23)
       - [Longest Increasing Subsequence](#longest-increasing-subsequence)
-        - [Python](#python-28)
+        - [Python](#python-32)
         - [Output](#output-24)
         - [C++](#c-33)
         - [Output](#output-25)
-        - [Java](#java-28)
+        - [Java](#java-32)
         - [Output](#output-26)
       - [Longest Palindromic Subsequence](#longest-palindromic-subsequence)
-        - [Python](#python-29)
+        - [Python](#python-33)
         - [Output](#output-27)
         - [C++](#c-34)
         - [Output](#output-28)
-        - [Java](#java-29)
+        - [Java](#java-33)
         - [Output](#output-29)
       - [Maxtrix Chain Multiplication](#maxtrix-chain-multiplication)
-        - [Python](#python-30)
+        - [Python](#python-34)
         - [Output](#output-30)
         - [C++](#c-35)
         - [Output](#output-31)
-        - [Java](#java-30)
+        - [Java](#java-34)
         - [Output](#output-32)
       - [Rod Cutting](#rod-cutting)
-        - [Python](#python-31)
+        - [Python](#python-35)
         - [Output](#output-33)
         - [C++](#c-36)
         - [Output](#output-34)
-        - [Java](#java-31)
+        - [Java](#java-35)
         - [Output](#output-35)
       - [Subset Sum](#subset-sum)
-        - [Python](#python-32)
+        - [Python](#python-36)
         - [Output](#output-36)
         - [C++](#c-37)
         - [Output](#output-37)
-        - [Java](#java-32)
+        - [Java](#java-36)
         - [Output](#output-38)
 
 ## Data Structures
@@ -1227,6 +1277,625 @@ linked_list.append(4)
 linked_list.deleteNode(3)
 
 linked_list.printList()
+```
+
+### Stacks and Queues
+
+Stacks and queues are data structures. Stacks and queues are data structures in computer science. Stacks and queues are data structures in programming. Stacks and queues are data structures in mathematics. Stacks and queues are data structures in engineering. Stacks and queues are data structures in science. Stacks and queues are data structures in business. Stacks and queues are data structures in sports. Stacks and queues are data structures in everyday life. Stacks and queues are data structures in every field.
+
+#### Stacks
+
+Stacks are data structures. Stacks are data structures in computer science. Stacks are data structures in programming. Stacks are data structures in mathematics. Stacks are data structures in engineering. Stacks are data structures in science. Stacks are data structures in business. Stacks are data structures in sports. Stacks are data structures in everyday life. Stacks are data structures in every field.
+
+##### Stack Operations
+
+Stacks have operations. Stacks have operations in computer science. Stacks have operations in programming. Stacks have operations in mathematics. Stacks have operations in engineering. Stacks have operations in science. Stacks have operations in business. Stacks have operations in sports. Stacks have operations in everyday life. Stacks have operations in every field.
+
+###### Push
+
+Push is a stack operation. Push is a stack operation in computer science. Push is a stack operation in programming. Push is a stack operation in mathematics. Push is a stack operation in engineering. Push is a stack operation in science. Push is a stack operation in business. Push is a stack operation in sports. Push is a stack operation in everyday life. Push is a stack operation in every field.
+
+###### Pop
+
+Pop is a stack operation. Pop is a stack operation in computer science. Pop is a stack operation in programming. Pop is a stack operation in mathematics. Pop is a stack operation in engineering. Pop is a stack operation in science. Pop is a stack operation in business. Pop is a stack operation in sports. Pop is a stack operation in everyday life. Pop is a stack operation in every field.
+
+###### Peek
+
+Peek is a stack operation. Peek is a stack operation in computer science. Peek is a stack operation in programming. Peek is a stack operation in mathematics. Peek is a stack operation in engineering. Peek is a stack operation in science. Peek is a stack operation in business. Peek is a stack operation in sports. Peek is a stack operation in everyday life. Peek is a stack operation in every field.
+
+###### isEmpty
+
+isEmpty is a stack operation. isEmpty is a stack operation in computer science. isEmpty is a stack operation in programming. isEmpty is a stack operation in mathematics. isEmpty is a stack operation in engineering. isEmpty is a stack operation in science. isEmpty is a stack operation in business. isEmpty is a stack operation in sports. isEmpty is a stack operation in everyday life. isEmpty is a stack operation in every field.
+
+##### Stack Implementation
+
+Stacks are implemented. Stacks are implemented in computer science. Stacks are implemented in programming. Stacks are implemented in mathematics. Stacks are implemented in engineering. Stacks are implemented in science. Stacks are implemented in business. Stacks are implemented in sports. Stacks are implemented in everyday life. Stacks are implemented in every field.
+
+###### Array Implementation
+
+Array implementation is a stack implementation. Array implementation is a stack implementation in computer science. Array implementation is a stack implementation in programming. Array implementation is a stack implementation in mathematics. Array implementation is a stack implementation in engineering. Array implementation is a stack implementation in science. Array implementation is a stack implementation in business. Array implementation is a stack implementation in sports. Array implementation is a stack implementation in everyday life. Array implementation is a stack implementation in every field.
+
+###### Linked List Implementation
+
+Linked list implementation is a stack implementation. Linked list implementation is a stack implementation in computer science. Linked list implementation is a stack implementation in programming. Linked list implementation is a stack implementation in mathematics. Linked list implementation is a stack implementation in engineering. Linked list implementation is a stack implementation in science. Linked list implementation is a stack implementation in business. Linked list implementation is a stack implementation in sports. Linked list implementation is a stack implementation in everyday life. Linked list implementation is a stack implementation in every field.
+
+#### Queues
+
+Queues are data structures. Queues are data structures in computer science. Queues are data structures in programming. Queues are data structures in mathematics. Queues are data structures in engineering. Queues are data structures in science. Queues are data structures in business. Queues are data structures in sports. Queues are data structures in everyday life. Queues are data structures in every field.
+
+##### Queue Operations
+
+Queues have operations. Queues have operations in computer science. Queues have operations in programming. Queues have operations in mathematics. Queues have operations in engineering. Queues have operations in science. Queues have operations in business. Queues have operations in sports. Queues have operations in everyday life. Queues have operations in every field.
+
+###### Enqueue
+
+Enqueue is a queue operation. Enqueue is a queue operation in computer science. Enqueue is a queue operation in programming. Enqueue is a queue operation in mathematics. Enqueue is a queue operation in engineering. Enqueue is a queue operation in science. Enqueue is a queue operation in business. Enqueue is a queue operation in sports. Enqueue is a queue operation in everyday life. Enqueue is a queue operation in every field.
+
+###### Dequeue
+
+Dequeue is a queue operation. Dequeue is a queue operation in computer science. Dequeue is a queue operation in programming. Dequeue is a queue operation in mathematics. Dequeue is a queue operation in engineering. Dequeue is a queue operation in science. Dequeue is a queue operation in business. Dequeue is a queue operation in sports. Dequeue is a queue operation in everyday life. Dequeue is a queue operation in every field.
+
+###### Peek
+
+Peek is a queue operation. Peek is a queue operation in computer science. Peek is a queue operation in programming. Peek is a queue operation in mathematics. Peek is a queue operation in engineering. Peek is a queue operation in science. Peek is a queue operation in business. Peek is a queue operation in sports. Peek is a queue operation in everyday life. Peek is a queue operation in every field.
+
+###### isEmpty
+
+isEmpty is a queue operation. isEmpty is a queue operation in computer science. isEmpty is a queue operation in programming. isEmpty is a queue operation in mathematics. isEmpty is a queue operation in engineering. isEmpty is a queue operation in science. isEmpty is a queue operation in business. isEmpty is a queue operation in sports. isEmpty is a queue operation in everyday life. isEmpty is a queue operation in every field.
+
+##### Queue Implementation
+
+Queues are implemented. Queues are implemented in computer science. Queues are implemented in programming. Queues are implemented in mathematics. Queues are implemented in engineering. Queues are implemented in science. Queues are implemented in business. Queues are implemented in sports. Queues are implemented in everyday life. Queues are implemented in every field.
+
+###### Array Implementation
+
+Array implementation is a queue implementation. Array implementation is a queue implementation in computer science. Array implementation is a queue implementation in programming. Array implementation is a queue implementation in mathematics. Array implementation is a queue implementation in engineering. Array implementation is a queue implementation in science. Array implementation is a queue implementation in business. Array implementation is a queue implementation in sports. Array implementation is a queue implementation in everyday life. Array implementation is a queue implementation in every field.
+
+###### Linked List Implementation
+
+Linked list implementation is a queue implementation. Linked list implementation is a queue implementation in computer science. Linked list implementation is a queue implementation in programming. Linked list implementation is a queue implementation in mathematics. Linked list implementation is a queue implementation in engineering. Linked list implementation is a queue implementation in science. Linked list implementation is a queue implementation in business. Linked list implementation is a queue implementation in sports. Linked list implementation is a queue implementation in everyday life. Linked list implementation is a queue implementation in every field.
+
+#### Trees
+
+Trees are data structures. Trees are data structures in computer science. Trees are data structures in programming. Trees are data structures in mathematics. Trees are data structures in engineering. Trees are data structures in science. Trees are data structures in business. Trees are data structures in sports. Trees are data structures in everyday life. Trees are data structures in every field.
+
+##### Tree Operations
+
+Trees have operations. Trees have operations in computer science. Trees have operations in programming. Trees have operations in mathematics. Trees have operations in engineering. Trees have operations in science. Trees have operations in business. Trees have operations in sports. Trees have operations in everyday life. Trees have operations in every field.
+
+###### Insert
+
+Insert is a tree operation. Insert is a tree operation in computer science. Insert is a tree operation in programming. Insert is a tree operation in mathematics. Insert is a tree operation in engineering. Insert is a tree operation in science. Insert is a tree operation in business. Insert is a tree operation in sports. Insert is a tree operation in everyday life. Insert is a tree operation in every field.
+
+###### Delete
+
+Delete is a tree operation. Delete is a tree operation in computer science. Delete is a tree operation in programming. Delete is a tree operation in mathematics. Delete is a tree operation in engineering. Delete is a tree operation in science. Delete is a tree operation in business. Delete is a tree operation in sports. Delete is a tree operation in everyday life. Delete is a tree operation in every field.
+
+###### Search
+
+Search is a tree operation. Search is a tree operation in computer science. Search is a tree operation in programming. Search is a tree operation in mathematics. Search is a tree operation in engineering. Search is a tree operation in science. Search is a tree operation in business. Search is a tree operation in sports. Search is a tree operation in everyday life. Search is a tree operation in every field.
+
+###### isEmpty
+
+isEmpty is a tree operation. isEmpty is a tree operation in computer science. isEmpty is a tree operation in programming. isEmpty is a tree operation in mathematics. isEmpty is a tree operation in engineering. isEmpty is a tree operation in science. isEmpty is a tree operation in business. isEmpty is a tree operation in sports. isEmpty is a tree operation in everyday life. isEmpty is a tree operation in every field.
+
+##### Tree Implementation
+
+Trees are implemented. Trees are implemented in computer science. Trees are implemented in programming. Trees are implemented in mathematics. Trees are implemented in engineering. Trees are implemented in science. Trees are implemented in business. Trees are implemented in sports. Trees are implemented in everyday life. Trees are implemented in every field.
+
+###### Array Implementation
+
+Array implementation is a tree implementation. Array implementation is a tree implementation in computer science. Array implementation is a tree implementation in programming. Array implementation is a tree implementation in mathematics. Array implementation is a tree implementation in engineering. Array implementation is a tree implementation in science. Array implementation is a tree implementation in business. Array implementation is a tree implementation in sports. Array implementation is a tree implementation in everyday life. Array implementation is a tree implementation in every field.
+
+###### Linked List Implementation
+
+Linked list implementation is a tree implementation. Linked list implementation is a tree implementation in computer science. Linked list implementation is a tree implementation in programming. Linked list implementation is a tree implementation in mathematics. Linked list implementation is a tree implementation in engineering. Linked list implementation is a tree implementation in science. Linked list implementation is a tree implementation in business. Linked list implementation is a tree implementation in sports. Linked list implementation is a tree implementation in everyday life. Linked list implementation is a tree implementation in every field.
+
+### Examples of Stacks and Queues using C/C++, Java, Python, and JavaScript
+
+#### Stack
+
+##### C/C++
+
+```c++
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> s;
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    s.push(4);
+    s.push(5);
+    while (!s.empty()) {
+        cout << s.top() << endl;
+        s.pop();
+    }
+    return 0;
+}
+```
+
+##### Java
+
+```java
+import java.util.Stack;
+
+public class Main {
+    public static void main(String[] args) {
+        Stack<Integer> s = new Stack<>();
+        s.push(1);
+        s.push(2);
+        s.push(3);
+        s.push(4);
+        s.push(5);
+        while (!s.empty()) {
+            System.out.println(s.peek());
+            s.pop();
+        }
+    }
+}
+```
+
+##### Python
+
+```python
+s = []
+s.append(1)
+s.append(2)
+s.append(3)
+s.append(4)
+s.append(5)
+while len(s) > 0:
+    print(s[-1])
+    s.pop()
+```
+
+##### JavaScript
+
+```javascript
+let s = [];
+s.push(1);
+s.push(2);
+s.push(3);
+s.push(4);
+s.push(5);
+while (s.length > 0) {
+  console.log(s[s.length - 1]);
+  s.pop();
+}
+```
+
+#### Queue
+
+##### C/C++
+
+```c++
+#include <iostream>
+#include <queue>
+using namespace std;
+
+int main() {
+    queue<int> q;
+    q.push(1);
+    q.push(2);
+    q.push(3);
+    q.push(4);
+    q.push(5);
+    while (!q.empty()) {
+        cout << q.front() << endl;
+        q.pop();
+    }
+    return 0;
+}
+```
+
+##### Java
+
+```java
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList<Integer> q = new LinkedList<>();
+        q.add(1);
+        q.add(2);
+        q.add(3);
+        q.add(4);
+        q.add(5);
+        while (!q.isEmpty()) {
+            System.out.println(q.peek());
+            q.remove();
+        }
+    }
+}
+```
+
+##### Python
+
+```python
+q = []
+q.append(1)
+q.append(2)
+q.append(3)
+q.append(4)
+q.append(5)
+while len(q) > 0:
+    print(q[0])
+    q.pop(0)
+```
+
+##### JavaScript
+
+```javascript
+let q = [];
+q.push(1);
+q.push(2);
+q.push(3);
+q.push(4);
+q.push(5);
+while (q.length > 0) {
+  console.log(q[0]);
+  q.shift();
+}
+```
+
+### Examples of Trees using C/C++, Java, Python, and JavaScript
+
+#### Binary Tree
+
+##### C/C++
+
+```c++
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+};
+
+Node *newNode(int data) {
+    Node *node = new Node;
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+    return node;
+}
+
+void printInOrder(Node *node) {
+    if (node == NULL) {
+        return;
+    }
+    printInOrder(node->left);
+    cout << node->data << endl;
+    printInOrder(node->right);
+}
+
+int main() {
+    Node *root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(3);
+    root->left->left = newNode(4);
+    root->left->right = newNode(5);
+    printInOrder(root);
+    return 0;
+}
+```
+
+##### Java
+
+```java
+public class Main {
+    public static class Node {
+        int data;
+        Node left;
+        Node right;
+    }
+
+    public static Node newNode(int data) {
+        Node node = new Node();
+        node.data = data;
+        node.left = null;
+        node.right = null;
+        return node;
+    }
+
+    public static void printInOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        printInOrder(node.left);
+        System.out.println(node.data);
+        printInOrder(node.right);
+    }
+
+    public static void main(String[] args) {
+        Node root = newNode(1);
+        root.left = newNode(2);
+        root.right = newNode(3);
+        root.left.left = newNode(4);
+        root.left.right = newNode(5);
+        printInOrder(root);
+    }
+}
+```
+
+##### Python
+
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def newNode(data):
+    node = Node(data)
+    return node
+
+def printInOrder(node):
+    if node == None:
+        return
+    printInOrder(node.left)
+    print(node.data)
+    printInOrder(node.right)
+
+root = newNode(1)
+
+root.left = newNode(2)
+root.right = newNode(3)
+
+root.left.left = newNode(4)
+root.left.right = newNode(5)
+
+printInOrder(root)
+```
+
+##### JavaScript
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function newNode(data) {
+  let node = new Node(data);
+  return node;
+}
+
+function printInOrder(node) {
+  if (node == null) {
+    return;
+  }
+  printInOrder(node.left);
+  console.log(node.data);
+  printInOrder(node.right);
+}
+
+let root = newNode(1);
+
+root.left = newNode(2);
+
+root.right = newNode(3);
+
+root.left.left = newNode(4);
+
+root.left.right = newNode(5);
+
+printInOrder(root);
+```
+
+#### Binary Search Tree
+
+##### C/C++
+
+```c++
+
+#include <iostream>
+
+using namespace std;
+
+struct Node {
+    int data;
+    Node *left;
+    Node *right;
+};
+
+Node *newNode(int data) {
+    Node *node = new Node;
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+    return node;
+}
+
+Node *insert(Node *node, int data) {
+    if (node == NULL) {
+        return newNode(data);
+    }
+    if (data < node->data) {
+        node->left = insert(node->left, data);
+    } else if (data > node->data) {
+        node->right = insert(node->right, data);
+    }
+    return node;
+}
+
+void printInOrder(Node *node) {
+    if (node == NULL) {
+        return;
+    }
+    printInOrder(node->left);
+    cout << node->data << endl;
+    printInOrder(node->right);
+}
+
+int main() {
+    Node *root = NULL;
+    root = insert(root, 50);
+    insert(root, 30);
+    insert(root, 20);
+    insert(root, 40);
+    insert(root, 70);
+    insert(root, 60);
+    insert(root, 80);
+    printInOrder(root);
+    return 0;
+}
+```
+
+##### Java
+
+```java
+public class Main {
+    public static class Node {
+        int data;
+        Node left;
+        Node right;
+    }
+
+    public static Node newNode(int data) {
+        Node node = new Node();
+        node.data = data;
+        node.left = null;
+        node.right = null;
+        return node;
+    }
+
+    public static Node insert(Node node, int data) {
+        if (node == null) {
+            return newNode(data);
+        }
+        if (data < node.data) {
+            node.left = insert(node.left, data);
+        } else if (data > node.data) {
+            node.right = insert(node.right, data);
+        }
+        return node;
+    }
+
+    public static void printInOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        printInOrder(node.left);
+        System.out.println(node.data);
+        printInOrder(node.right);
+    }
+
+    public static void main(String[] args) {
+        Node root = null;
+        root = insert(root, 50);
+        insert(root, 30);
+        insert(root, 20);
+        insert(root, 40);
+        insert(root, 70);
+        insert(root, 60);
+        insert(root, 80);
+        printInOrder(root);
+    }
+}
+```
+
+##### Python
+
+```python
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+
+def newNode(data):
+    node = Node(data)
+    return node
+
+def insert(node, data):
+    if node == None:
+        return newNode(data)
+    if data < node.data:
+        node.left = insert(node.left, data)
+    elif data > node.data:
+        node.right = insert(node.right, data)
+    return node
+
+def printInOrder(node):
+    if node == None:
+        return
+    printInOrder(node.left)
+    print(node.data)
+    printInOrder(node.right)
+
+root = None
+root = insert(root, 50)
+insert(root, 30)
+insert(root, 20)
+insert(root, 40)
+insert(root, 70)
+insert(root, 60)
+
+printInOrder(root)
+```
+
+##### JavaScript
+
+```javascript
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function newNode(data) {
+  let node = new Node(data);
+  return node;
+}
+
+function insert(node, data) {
+  if (node == null) {
+    return newNode(data);
+  }
+  if (data < node.data) {
+    node.left = insert(node.left, data);
+  } else if (data > node.data) {
+    node.right = insert(node.right, data);
+  }
+  return node;
+}
+
+function printInOrder(node) {
+  if (node == null) {
+    return;
+  }
+  printInOrder(node.left);
+  console.log(node.data);
+  printInOrder(node.right);
+}
+
+let root = null;
+
+root = insert(root, 50);
+
+insert(root, 30);
+
+insert(root, 20);
+
+insert(root, 40);
+
+insert(root, 70);
+
+insert(root, 60);
+
+printInOrder(root);
 ```
 
 ## Algorithms
