@@ -134,7 +134,7 @@
         - [Python](#python-21)
   - [Graphs](#graphs)
     - [Breadth-first search](#breadth-first-search)
-        - [Algorithm](#algorithm-2)
+      - [Algorithm](#algorithm-2)
         - [C](#c-21)
         - [Output](#output)
         - [Python](#python-22)
@@ -4185,11 +4185,11 @@ Following is Breadth First Traversal (starting from vertex 2)
 2 0 3 1
 ```
 
-#### Depth-first search
+### Depth-first search
 
 Depth-first search \(DFS\) is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node \(selecting some arbitrary node as the root node in the case of a graph\) and explores as far as possible along each branch before backtracking.
 
-##### C
+#### C
 
 ```c
 // Depth-first search
@@ -4282,7 +4282,7 @@ int main() {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 Visited 2
@@ -4291,7 +4291,7 @@ Visited 0
 Visited 1
 ```
 
-##### C++
+#### C++
 
 ```cpp
 // Depth-first search
@@ -4353,14 +4353,14 @@ int main() {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 Following is Depth First Traversal (starting from vertex 2)
 2 0 1 3
 ```
 
-##### Java
+#### Java
 
 ```java
 // Depth-first search
@@ -4421,14 +4421,14 @@ class Graph {
 }
 ```
 
-##### Output
+#### Output
 
 ```text
 Following is Depth First Traversal (starting from vertex 2)
 2 0 1 3
 ```
 
-##### Python
+#### Python
 
 ```python
 # Depth-first search
@@ -4466,7 +4466,7 @@ print("Following is Depth First Traversal (starting from vertex 2)")
 g.DFS(2)
 ```
 
-##### Output
+#### Output
 
 ```text
 Following is Depth First Traversal (starting from vertex 2)
