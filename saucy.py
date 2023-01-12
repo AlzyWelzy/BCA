@@ -14,8 +14,10 @@ for folder in folders:
     if match:
         numbers.append(int(match.group(1)))
 
-print(numbers)
+# print(numbers)
 
 for number in numbers:
     with open("saucy.txt", "a") as f:
-        f.write(str(number)+"\n")
+        # f.write(str(number)+"\n")
+        # f.write(f'{number} [nhentai.net/g/{number}] \n')
+        f.write(f'https://nhentai.net/g/{number} \n')
