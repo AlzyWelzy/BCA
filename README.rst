@@ -32,3 +32,7 @@ Topics covered include:
 -  Descriptive statistics and graphical representation of data
 -  Probability and probability distributions
 -  Statistical inference and hypothesis testing
+
+
+
+License
