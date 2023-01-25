@@ -35,4 +35,4 @@ Topics covered include:
 
 
 
-License
+License: AGPL
